@@ -8,7 +8,7 @@ class Player {
     constructor(_color, _position, _displaySize) {
         this.playerColor = _color;
         this.position = _position;
-        this.score = 0;
+        this.boolean = 0;
         this.displaySize = _displaySize;
     }
 
@@ -18,19 +18,35 @@ class Player {
         // increments or decrements player position
         this.position = this.position + _direction;
       
-        // if player hits the edge of display, loop around
-        if (this.position == -1) {
-            this.position = this.displaySize - 1;
-        } else if (this.position == this.displaySize) {
+        // once the pixel drops to the ground, loop around
+        if (this.position == this.displaySize) {
             this.position = parseInt(random(-10,5));
-        } else if(this.position == ponding[0].position-1){
-            for (let i=0; i<10; i++){
-                ponding[i].position = 50+i- parseInt(p) - missed;
+            // clear the negative point
+            m=n;
+            if(p>=1){
+                p=0;
             }
+        } 
+        else if(this.position == ponding[0].position-1){
             n++;
-            console.log(print('n=',n));
 
-            missed = n-m;
+            if(n>m){
+                missed = n-m;
+            }
+            else{
+                missed = 0;
+            }
+
+            console.log(print('missed=',missed));
+            for (let i=0; i<10; i++){
+                ponding[i].position = ponding[i].position- parseInt(p) - missed;
+            }
+            if(p>=1){
+                precipitation.play();
+            }
+            if(playerOne.boolean == 0){
+                precipitation.play();
+            }
         }
          
     } 
