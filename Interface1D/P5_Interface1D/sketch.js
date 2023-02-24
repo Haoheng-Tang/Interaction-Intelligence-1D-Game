@@ -26,6 +26,16 @@ let targettail;   // tail1 following the target.
 
 let targettaill;  // tail2 following the target.
 
+let target2;       // and aonther target for players to catch.
+
+let target2head;   // head in front of the target2.
+
+let target2headd;  // head2 in front of the target2.
+
+let target2tail;   // tail1 following the target2.
+
+let target2taill;  // tail2 following the target2.
+
 let ponding = [];
 
 let n = 0;        // how many times rain drops.
@@ -50,7 +60,7 @@ let startpt;      // Defining the startpoint of the target (outside the frame)
 
 
 function preload(){
-  drumbeat = loadSound('drumbeat.mp3');
+  drumbeat = loadSound('drumbt.mp3');
   drumroll = loadSound('drumroll.mp3');
   losinggame = loadSound('losing.mp3');
   precipitation = loadSound('game-ball-tap.mp3');
@@ -71,12 +81,19 @@ function setup() {
   targethead = new Player(color(110,110,140), startpt+1, displaySize);    // Initializing targethead using the Player class
   targetheadd = new Player(color(30,30,60), startpt+2, displaySize);    // Initializing targetheadd using the Player class
 
+  startpt2 = parseInt(random(-20,-5));
+  target2 = new Player(color(255,230,0), startpt2-2, displaySize);    // Initializing target using the Player class
+  target2tail = new Player(color(200,110,0), startpt2-1, displaySize);    // Initializing targettail using the Player class
+  target2taill = new Player(color(160,30,0), startpt2, displaySize);    // Initializing targettail using the Player class
+  target2head = new Player(color(140,110,0), startpt2+1, displaySize);    // Initializing targethead using the Player class
+  target2headd = new Player(color(60,30,0), startpt2+2, displaySize);    // Initializing targetheadd using the Player class
+
   for(let i=0; i<10; i++){
     ponding.push(new Player(color(60,60,250), 50+i, displaySize));}   // Initializing ponding array using the Player class
 
   controller = new Controller();            // Initializing controller
 
-  frameRate(40);
+  frameRate(30);
 
 }
 

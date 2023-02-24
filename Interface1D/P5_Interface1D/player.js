@@ -21,8 +21,6 @@ class Player {
         // once the pixel drops to the ground, loop around
         if (this.position == this.displaySize) {
             this.position = parseInt(random(-10,5));
-            // clear the negative point
-            m=n;
             if(p>=1){
                 p=0;
             }
@@ -32,6 +30,7 @@ class Player {
 
             if(n>m){
                 missed = n-m;
+                playerOne.boolean = 0;
             }
             else{
                 missed = 0;
@@ -47,6 +46,9 @@ class Player {
             if(playerOne.boolean == 0){
                 precipitation.play();
             }
+
+            // clear the negative point
+            m=n;
         }
          
     } 
