@@ -43,6 +43,9 @@ class Controller {
                 display.setPixel(ttarget2tail.position, ttarget2tail.playerColor);
                 display.setPixel(ttarget2taill.position, ttarget2taill.playerColor);
 
+                display.setPixel(kit.position, kit.playerColor);
+                display.setPixel(kit2.position, kit2.playerColor);
+
                 if (tdirect == -1){
                     target.move(-1);
                     targettail.move(-1);
@@ -70,6 +73,7 @@ class Controller {
                     targettaill.position = -1;
                     tdirect =0;
                     playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
+                    bass.play();
                 }
                 if(ttarget.position == playerTwo.position){
                     bloodTwo --;
@@ -78,6 +82,7 @@ class Controller {
                     ttargettaill.position = -1;
                     ttdirect =0;
                     playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
+                    bass.play();
                 }
 
 
@@ -108,6 +113,7 @@ class Controller {
                     target2taill.position = -2;
                     t2direct = 0;
                     playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
+                    bass.play();
                 }
                 if(ttarget2.position == playerOne.position){
                     bloodOne --;
@@ -116,7 +122,9 @@ class Controller {
                     ttarget2taill.position = -2;
                     tt2direct = 0;
                     playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
+                    bass.play();
                 }
+
 
                 if(target.position == target2.position || target.position == target2tail.position || target.position == target2taill.position || target2.position == targettail.position || target2.position == targettaill.position){
                     target.position =-1;
@@ -163,9 +171,26 @@ class Controller {
                     drumroll.play();
                 }
 
+                if(playerOne.position == kit.position){
+                    hit.play();
+                    kit.position = -10;
+                }
+                if(playerOne.position == kit2.position){
+                    hit.play();
+                    kit2.position = -10;
+                }
+                if(playerTwo.position == kit.position){
+                    hit.play();
+                    kit.position = -10;
+                }
+                if(playerTwo.position == kit2.position){
+                    hit.play();
+                    kit2.position = -10;
+                }
+
 
                 if(bloodOne <= 0 || bloodTwo <= 0){
-                    losinggame.play();
+                    wingame.play();
                     this.gameState = "SCORE";   // go to SCORE state
                 }
 
@@ -271,7 +296,9 @@ function keyPressed() {
             tt2direct=-1;
             drumbeat.play();
         }
-        misfire.play();
+        else{
+            misfire.play();
+        }
     }   
 
     if (keyCode == '190') {
