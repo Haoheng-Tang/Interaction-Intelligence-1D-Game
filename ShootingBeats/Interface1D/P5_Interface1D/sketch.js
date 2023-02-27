@@ -23,7 +23,9 @@ let tdirect =0;   // target 1 direction.
 let ttarget;      // the second bullet for playOne.
 let ttargettail;  // tail1 following the second target.
 let ttargettaill; // tail2 following the second target.
-let ttdirect =0;   // second target 1 direction.  
+let ttdirect =0;   // second target 1 direction.
+let force = 1;     // to what extend that a bullet from playerOne will hurt playerTwo
+let num = 0;       // how many super bullets owned by playerOne
 
 let playerTwo;     // Adding playerTwo to the game
 let bloodTwo = 10;  // The times that playOne can be hit by bullets
@@ -35,9 +37,12 @@ let ttarget2;      // the second bullet for playTwo
 let ttarget2tail;  // tail1 following the second target.
 let ttarget2taill; // tail2 following the second target.
 let tt2direct =0;   // target 2 direction.  
+let force2 = 1;     // to what extend that a bullet from playerTwo will hurt playerOne
+let num2 = 0;       // how many super bullets owned by playerTwo
 
 let kit;          // a kit that can enhance the attack of a player
 let kit2;         // another kit that can enhance the attack of a player
+let kit3;         // another kit that can enhance the attack of a player
 
 let display;      // Aggregates our final visual output before showing it on the screen
 
@@ -62,7 +67,7 @@ function preload(){
   drumroll = loadSound('drumroll.mp3');
   bass = loadSound('drumbeat.mp3');
   wingame = loadSound('wingame.mp3');
-  hit = loadSound('hit.mp3');
+  bonus = loadSound('bonus.mp3');
   misfire = loadSound('game-ball-tap.mp3');
 }
 
@@ -90,8 +95,9 @@ function setup() {
   ttarget2tail = new Player(color(50,120,120), -2, displaySize);    // Initializing targettail using the Player class
   ttarget2taill = new Player(color(5,70,70), -2, displaySize);    // Initializing targettail using the Player class
 
-  kit = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing players
-  kit2 = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing players
+  kit = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit2 = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit3 = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
 
   controller = new Controller();            // Initializing controller
 

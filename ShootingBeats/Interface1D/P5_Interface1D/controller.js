@@ -45,6 +45,7 @@ class Controller {
 
                 display.setPixel(kit.position, kit.playerColor);
                 display.setPixel(kit2.position, kit2.playerColor);
+                display.setPixel(kit3.position, kit2.playerColor);
 
                 if (tdirect == -1){
                     target.move(-1);
@@ -67,7 +68,7 @@ class Controller {
                     ttargettaill.move(1);
                 }
                 if(target.position == playerTwo.position){
-                    bloodTwo --;
+                    bloodTwo = bloodTwo - force;
                     target.position =-1;
                     targettail.position = -1;
                     targettaill.position = -1;
@@ -76,7 +77,7 @@ class Controller {
                     bass.play();
                 }
                 if(ttarget.position == playerTwo.position){
-                    bloodTwo --;
+                    bloodTwo = bloodTwo- force;
                     ttarget.position =-1;
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
@@ -107,7 +108,7 @@ class Controller {
                     ttarget2taill.move(1);
                 }
                 if(target2.position == playerOne.position){
-                    bloodOne --;
+                    bloodOne = bloodOne- force2;
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
@@ -116,7 +117,7 @@ class Controller {
                     bass.play();
                 }
                 if(ttarget2.position == playerOne.position){
-                    bloodOne --;
+                    bloodOne = bloodOne- force2;
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
@@ -172,20 +173,35 @@ class Controller {
                 }
 
                 if(playerOne.position == kit.position){
-                    hit.play();
+                    bonus.play();
                     kit.position = -10;
+                    num++;
                 }
                 if(playerOne.position == kit2.position){
-                    hit.play();
+                    bonus.play();
                     kit2.position = -10;
+                    num++;
                 }
+                if(playerOne.position == kit3.position){
+                    bonus.play();
+                    kit3.position = -10;
+                    num++;
+                }
+
                 if(playerTwo.position == kit.position){
-                    hit.play();
+                    bonus.play();
                     kit.position = -10;
+                    num2++;
                 }
                 if(playerTwo.position == kit2.position){
-                    hit.play();
+                    bonus.play();
                     kit2.position = -10;
+                    num2++;
+                }
+                if(playerTwo.position == kit3.position){
+                    bonus.play();
+                    kit3.position = -10;
+                    num2++;
                 }
 
 
@@ -238,6 +254,19 @@ function keyPressed() {
             targettaill.position = target.position+2;
             tdirect=-1;
             drumbeat.play();
+            if(num == 0){
+                force = 1;
+                target.playerColor = color(220,220,140);
+                targettail.playerColor = color(120,120,80);
+                targettaill.playerColor = color(50,50,20);
+            }
+            if(num > 0){
+                force = 2;
+                target.playerColor = color(230, 60, 40);
+                targettail.playerColor = color(150, 40, 20);
+                targettaill.playerColor = color(100, 20, 5);
+                num--;
+            }
         }
         else if(ttarget.position == -1){
             ttarget.position = playerOne.position;
@@ -245,6 +274,20 @@ function keyPressed() {
             ttargettaill.position = ttarget.position+2;
             ttdirect=-1;
             drumbeat.play();
+            if(num == 0){
+                force = 1;
+                ttarget.playerColor = color(220,220,140);
+                ttargettail.playerColor = color(120,120,80);
+                ttargettaill.playerColor = color(50,50,20);
+            }
+            if(num > 0){
+                force = 2;
+                ttarget.playerColor = color(230, 60, 40);
+                ttarget.playerColor = color(230, 60, 40);
+                ttargettail.playerColor = color(150, 40, 20);
+                ttargettaill.playerColor = color(100, 20, 5);
+                num--;
+            }
         }
         else{
             misfire.play();
@@ -258,6 +301,19 @@ function keyPressed() {
             targettaill.position = target.position-2;
             tdirect=1;
             drumbeat.play();
+            if(num == 0){
+                force = 1;
+                target.playerColor = color(220,220,140);
+                targettail.playerColor = color(120,120,80);
+                targettaill.playerColor = color(50,50,20);
+            }
+            if(num > 0){
+                force = 2;
+                target.playerColor = color(230, 60, 40);
+                targettail.playerColor = color(150, 40, 20);
+                targettaill.playerColor = color(100, 20, 5);
+                num--;
+            }
         }
         else if(ttarget.position == -1){
             ttarget.position = playerOne.position;
@@ -265,6 +321,19 @@ function keyPressed() {
             ttargettaill.position = ttarget.position-2;
             ttdirect=1;
             drumbeat.play();
+            if(num == 0){
+                force = 1;
+                ttarget.playerColor = color(220,220,140);
+                ttargettail.playerColor = color(120,120,80);
+                ttargettaill.playerColor = color(50,50,20);
+            }
+            if(num > 0){
+                force = 2;
+                ttarget.playerColor = color(230, 60, 40);
+                ttargettail.playerColor = color(150, 40, 20);
+                ttargettaill.playerColor = color(100, 20, 5);
+                num--;
+            }
         }
         else{
             misfire.play();
@@ -288,6 +357,19 @@ function keyPressed() {
             target2taill.position = target2.position+2
             t2direct=-1;
             drumbeat.play();
+            if(num2 == 0){
+                force2 = 1;
+                target2.playerColor = color(120,235,235);
+                target2tail.playerColor = color(50,120,120);
+                target2taill.playerColor = color(5,70,70);
+            }
+            if(num2 > 0){
+                force2 = 2;
+                target2.playerColor = color(230, 60, 40);
+                target2tail.playerColor = color(150, 40, 20);
+                target2taill.playerColor = color(100, 20, 5);
+                num2--;
+            }
         }
         else if(ttarget2.position == -2){
             ttarget2.position = playerTwo.position;
@@ -295,6 +377,20 @@ function keyPressed() {
             ttarget2taill.position = ttarget2.position+2
             tt2direct=-1;
             drumbeat.play();
+            if(num2 == 0){
+                force2 = 1;
+                ttarget2.playerColor = color(120,235,235);
+                ttarget2tail.playerColor = color(50,120,120);
+                ttarget2taill.playerColor = color(5,70,70);
+            }
+            if(num2 > 0){
+                force2 = 2;
+                ttarget2.playerColor = color(230, 60, 40);
+                ttarget2tail.playerColor = color(150, 40, 20);
+                ttarget2taill.playerColor = color(100, 20, 5);
+                num2--;
+            }
+            force2 = 1;
         }
         else{
             misfire.play();
@@ -308,6 +404,19 @@ function keyPressed() {
             target2taill.position = target2.position-2
             t2direct = 1;
             drumbeat.play();
+            if(num2 == 0){
+                force2 = 1;
+                target2.playerColor = color(120,235,235);
+                target2tail.playerColor = color(50,120,120);
+                target2taill.playerColor = color(5,70,70);
+            }
+            if(num2 > 0){
+                force2 = 2;
+                target2.playerColor = color(230, 60, 40);
+                target2tail.playerColor = color(150, 40, 20);
+                target2taill.playerColor = color(100, 20, 5);
+                num2--;
+            }
         }
         else if(ttarget2.position == -2){
             ttarget2.position = playerTwo.position;
@@ -315,6 +424,19 @@ function keyPressed() {
             ttarget2taill.position = ttarget2.position-2
             tt2direct = 1;
             drumbeat.play();
+            if(num2 == 0){
+                force2 = 1;
+                ttarget2.playerColor = color(120,235,235);
+                ttarget2tail.playerColor = color(50,120,120);
+                ttarget2taill.playerColor = color(5,70,70);
+            }
+            if(num2 > 0){
+                force2 = 2;
+                ttarget2.playerColor = color(230, 60, 40);
+                ttarget2tail.playerColor = color(150, 40, 20);
+                ttarget2taill.playerColor = color(100, 20, 5);
+                num2--;
+            }
         }
         else{
             misfire.play();
@@ -327,6 +449,7 @@ function keyPressed() {
         bloodOne = 10;
         bloodTwo = 10;
 
+        playerOne.position = parseInt(random(0,displaySize));
         playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
         target.position =-1;
         targettail.position = -1;
@@ -336,7 +459,9 @@ function keyPressed() {
         target2tail.position = -2;
         target2taill.position = -2;
         t2direct = 0;
-        
+        force = 1;
+
+        playerTwo.position = parseInt(random(0,displaySize));
         playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
         ttarget.position =-1;
         ttargettail.position = -1;
@@ -346,6 +471,12 @@ function keyPressed() {
         ttarget2tail.position = -2;
         ttarget2taill.position = -2;
         tt2direct = 0;
+        force2 = 1;
+
+        kit.position = parseInt(random(0,displaySize));
+        kit2.position = parseInt(random(0,displaySize));
+        kit3.position = parseInt(random(0,displaySize));
+
         controller.gameState = "PLAY";
     }
 }
