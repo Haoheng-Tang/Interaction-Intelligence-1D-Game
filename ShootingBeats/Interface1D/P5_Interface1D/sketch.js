@@ -58,7 +58,9 @@ let bass;         // Sound that will play when a player is shot
 
 let hit;          // Sound that will play when a player pick up a kit
 
-let misfire;  // Sound that will play when the pixel drops
+let misfire;      // Sound that will play when the pixel drops
+
+let timer=0;        // count time
 
 
 
@@ -95,9 +97,9 @@ function setup() {
   ttarget2tail = new Player(color(50,120,120), -2, displaySize);    // Initializing targettail using the Player class
   ttarget2taill = new Player(color(5,70,70), -2, displaySize);    // Initializing targettail using the Player class
 
-  kit = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit2 = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit3 = new Player(color(60,60,60), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit2 = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit3 = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
 
   controller = new Controller();            // Initializing controller
 

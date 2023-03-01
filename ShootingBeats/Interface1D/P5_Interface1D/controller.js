@@ -128,49 +128,111 @@ class Controller {
 
 
                 if(target.position == target2.position || target.position == target2tail.position || target.position == target2taill.position || target2.position == targettail.position || target2.position == targettaill.position){
-                    target.position =-1;
-                    targettail.position = -1;
-                    targettaill.position = -1;
-                    tdirect =0;
-                    target2.position =-2;
-                    target2tail.position = -2;
-                    target2taill.position = -2;
-                    t2direct = 0;
+                    if(target.playerColor.levels[0] == 250 && target2.playerColor.levels[0] != 210){
+                        target2.position =-2;
+                        target2tail.position = -2;
+                        target2taill.position = -2;
+                        t2direct = 0;
+                    }
+                    else if(target.playerColor.levels[0] != 250 && target2.playerColor.levels[0] == 210){
+                        target.position =-1;
+                        targettail.position = -1;
+                        targettaill.position = -1;
+                        tdirect =0;
+                    }
+                    else{
+                        target.position =-1;
+                        targettail.position = -1;
+                        targettaill.position = -1;
+                        tdirect =0;
+                        target2.position =-2;
+                        target2tail.position = -2;
+                        target2taill.position = -2;
+                        t2direct = 0;
+                    }
+
                     drumroll.play();
                 }
+
                 if(target.position == ttarget2.position || target.position == ttarget2tail.position || target.position == ttarget2taill.position || ttarget2.position == targettail.position || ttarget2.position == targettaill.position){
-                    target.position =-1;
-                    targettail.position = -1;
-                    targettaill.position = -1;
-                    tdirect =0;
-                    ttarget2.position =-2;
-                    ttarget2tail.position = -2;
-                    ttarget2taill.position = -2;
-                    tt2direct = 0;
+                    if(target.playerColor.levels[0] == 250 && ttarget2.playerColor.levels[0] != 210){
+                        ttarget2.position =-2;
+                        ttarget2tail.position = -2;
+                        ttarget2taill.position = -2;
+                        tt2direct = 0;
+                    }
+                    else if(target.playerColor.levels[0] != 250 && ttarget2.playerColor.levels[0] == 210){
+                        target.position =-1;
+                        targettail.position = -1;
+                        targettaill.position = -1;
+                        tdirect =0;
+                    }
+                    else{
+                        target.position =-1;
+                        targettail.position = -1;
+                        targettaill.position = -1;
+                        tdirect =0;
+                        ttarget2.position =-2;
+                        ttarget2tail.position = -2;
+                        ttarget2taill.position = -2;
+                        tt2direct = 0;
+                    }
                     drumroll.play();
                 }
+                
                 if(ttarget.position == target2.position || ttarget.position == target2tail.position || ttarget.position == target2taill.position || target2.position == ttargettail.position || target2.position == ttargettaill.position){
-                    ttarget.position =-1;
-                    ttargettail.position = -1;
-                    ttargettaill.position = -1;
-                    ttdirect =0;
-                    target2.position =-2;
-                    target2tail.position = -2;
-                    target2taill.position = -2;
-                    t2direct = 0;
+                    if(ttarget.playerColor.levels[0] != 250 && target2.playerColor.levels[0] == 210){
+                        ttarget.position =-1;
+                        ttargettail.position = -1;
+                        ttargettaill.position = -1;
+                        ttdirect =0;
+                    }
+                    else if(ttarget.playerColor.levels[0] == 250 && target2.playerColor.levels[0] != 210){
+                        target2.position =-2;
+                        target2tail.position = -2;
+                        target2taill.position = -2;
+                        t2direct = 0;
+                    }
+                    else{
+                        ttarget.position =-1;
+                        ttargettail.position = -1;
+                        ttargettaill.position = -1;
+                        ttdirect =0;
+                        target2.position =-2;
+                        target2tail.position = -2;
+                        target2taill.position = -2;
+                        t2direct = 0;
+                    }
                     drumroll.play();
                 }
+
                 if(ttarget.position == ttarget2.position || ttarget.position == ttarget2tail.position || ttarget.position == ttarget2taill.position || ttarget2.position == ttargettail.position || ttarget2.position == ttargettaill.position){
-                    ttarget.position =-1;
-                    ttargettail.position = -1;
-                    ttargettaill.position = -1;
-                    ttdirect =0;
-                    ttarget2.position =-2;
-                    ttarget2tail.position = -2;
-                    ttarget2taill.position = -2;
-                    tt2direct = 0;
+                    if(ttarget.playerColor.levels[0] == 250 && ttarget2.playerColor.levels[0] != 210){
+                        ttarget2.position =-2;
+                        ttarget2tail.position = -2;
+                        ttarget2taill.position = -2;
+                        tt2direct = 0;
+                    }
+                    else if(ttarget.playerColor.levels[0] != 250 && ttarget2.playerColor.levels[0] == 210){
+                        ttarget.position =-1;
+                        ttargettail.position = -1;
+                        ttargettaill.position = -1;
+                        ttdirect =0;
+                    }
+                    else{
+                        ttarget.position =-1;
+                        ttargettail.position = -1;
+                        ttargettaill.position = -1;
+                        ttdirect =0;
+                        ttarget2.position =-2;
+                        ttarget2tail.position = -2;
+                        ttarget2taill.position = -2;
+                        tt2direct = 0;
+                    }
                     drumroll.play();
                 }
+
+
 
                 if(playerOne.position == kit.position){
                     bonus.play();
@@ -210,6 +272,20 @@ class Controller {
                     this.gameState = "SCORE";   // go to SCORE state
                 }
 
+                timer++;
+
+                if(timer == 500){
+                    if(kit.position == -10){
+                        kit.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit2.position == -10){
+                        kit2.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit3.position == -10){
+                        kit3.position = parseInt(random(0,displaySize));
+                    }
+                    timer = 0;
+                }
 
                 break;
 
@@ -262,9 +338,9 @@ function keyPressed() {
             }
             if(num > 0){
                 force = 2;
-                target.playerColor = color(230, 60, 40);
-                targettail.playerColor = color(150, 40, 20);
-                targettaill.playerColor = color(100, 20, 5);
+                target.playerColor = color(250, 80, 40);
+                targettail.playerColor = color(170, 60, 20);
+                targettaill.playerColor = color(120, 40, 5);
                 num--;
             }
         }
@@ -282,10 +358,9 @@ function keyPressed() {
             }
             if(num > 0){
                 force = 2;
-                ttarget.playerColor = color(230, 60, 40);
-                ttarget.playerColor = color(230, 60, 40);
-                ttargettail.playerColor = color(150, 40, 20);
-                ttargettaill.playerColor = color(100, 20, 5);
+                ttarget.playerColor = color(250, 80, 40);
+                ttargettail.playerColor = color(170, 60, 20);
+                ttargettaill.playerColor = color(120, 40, 5);
                 num--;
             }
         }
@@ -309,9 +384,9 @@ function keyPressed() {
             }
             if(num > 0){
                 force = 2;
-                target.playerColor = color(230, 60, 40);
-                targettail.playerColor = color(150, 40, 20);
-                targettaill.playerColor = color(100, 20, 5);
+                target.playerColor = color(250, 80, 40);
+                targettail.playerColor = color(170, 60, 20);
+                targettaill.playerColor = color(120, 40, 5);
                 num--;
             }
         }
@@ -329,9 +404,9 @@ function keyPressed() {
             }
             if(num > 0){
                 force = 2;
-                ttarget.playerColor = color(230, 60, 40);
-                ttargettail.playerColor = color(150, 40, 20);
-                ttargettaill.playerColor = color(100, 20, 5);
+                ttarget.playerColor = color(250, 80, 40);
+                ttargettail.playerColor = color(170, 60, 20);
+                ttargettaill.playerColor = color(120, 40, 5);
                 num--;
             }
         }
@@ -365,9 +440,9 @@ function keyPressed() {
             }
             if(num2 > 0){
                 force2 = 2;
-                target2.playerColor = color(230, 60, 40);
-                target2tail.playerColor = color(150, 40, 20);
-                target2taill.playerColor = color(100, 20, 5);
+                target2.playerColor = color(210, 60, 230);
+                target2tail.playerColor = color(150, 40, 150);
+                target2taill.playerColor = color(100, 20, 100);
                 num2--;
             }
         }
@@ -385,9 +460,9 @@ function keyPressed() {
             }
             if(num2 > 0){
                 force2 = 2;
-                ttarget2.playerColor = color(230, 60, 40);
-                ttarget2tail.playerColor = color(150, 40, 20);
-                ttarget2taill.playerColor = color(100, 20, 5);
+                ttarget2.playerColor = color(210, 60, 230);
+                ttarget2tail.playerColor = color(150, 40, 150);
+                ttarget2taill.playerColor = color(100, 20, 100);
                 num2--;
             }
             force2 = 1;
@@ -412,9 +487,9 @@ function keyPressed() {
             }
             if(num2 > 0){
                 force2 = 2;
-                target2.playerColor = color(230, 60, 40);
-                target2tail.playerColor = color(150, 40, 20);
-                target2taill.playerColor = color(100, 20, 5);
+                target2.playerColor = color(210, 60, 230);
+                target2tail.playerColor = color(150, 40, 150);
+                target2taill.playerColor = color(100, 20, 100);
                 num2--;
             }
         }
@@ -432,9 +507,9 @@ function keyPressed() {
             }
             if(num2 > 0){
                 force2 = 2;
-                ttarget2.playerColor = color(230, 60, 40);
-                ttarget2tail.playerColor = color(150, 40, 20);
-                ttarget2taill.playerColor = color(100, 20, 5);
+                ttarget2.playerColor = color(210, 60, 230);
+                ttarget2tail.playerColor = color(150, 40, 150);
+                ttarget2taill.playerColor = color(100, 20, 100);
                 num2--;
             }
         }
@@ -460,6 +535,7 @@ function keyPressed() {
         target2taill.position = -2;
         t2direct = 0;
         force = 1;
+        num = 0;
 
         playerTwo.position = parseInt(random(0,displaySize));
         playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
@@ -472,6 +548,7 @@ function keyPressed() {
         ttarget2taill.position = -2;
         tt2direct = 0;
         force2 = 1;
+        num2 = 0;
 
         kit.position = parseInt(random(0,displaySize));
         kit2.position = parseInt(random(0,displaySize));
