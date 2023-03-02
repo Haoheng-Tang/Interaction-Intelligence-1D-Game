@@ -78,8 +78,8 @@ function setup() {
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
 
-  playerOne = new Player(color(255,140,40), parseInt(random(0,displaySize)), displaySize);   // Initializing players
-  playerTwo = new Player(color(20,200,255), parseInt(random(0,displaySize)), displaySize);   // Initializing players
+  playerOne = new Player(color(255,130,40), parseInt(random(0,displaySize)), displaySize);   // Initializing players
+  playerTwo = new Player(color(10,170,255), parseInt(random(0,displaySize)), displaySize);   // Initializing players
 
   target = new Player(color(220,220,140), -1, displaySize);    // Initializing target using the Player class  
   targettail = new Player(color(120,120,80), -1, displaySize);    // Initializing targettail using the Player class
@@ -89,17 +89,17 @@ function setup() {
   ttargettail = new Player(color(120,120,80), -1, displaySize);    // Initializing targettail using the Player class
   ttargettaill = new Player(color(50,50,20), -1, displaySize);    // Initializing targettail using the Player class
 
-  target2 = new Player(color(120,235,235), -2, displaySize);    // Initializing target using the Player class
-  target2tail = new Player(color(50,120,120), -2, displaySize);    // Initializing targettail using the Player class
-  target2taill = new Player(color(5,70,70), -2, displaySize);    // Initializing targettail using the Player class
+  target2 = new Player(color(120,210,210), -2, displaySize);    // Initializing target using the Player class
+  target2tail = new Player(color(50,110,110), -2, displaySize);    // Initializing targettail using the Player class
+  target2taill = new Player(color(5,60,60), -2, displaySize);    // Initializing targettail using the Player class
 
-  ttarget2 = new Player(color(120,235,235), -2, displaySize);    // Initializing target using the Player class
-  ttarget2tail = new Player(color(50,120,120), -2, displaySize);    // Initializing targettail using the Player class
-  ttarget2taill = new Player(color(5,70,70), -2, displaySize);    // Initializing targettail using the Player class
+  ttarget2 = new Player(color(120,210,210), -2, displaySize);    // Initializing target using the Player class
+  ttarget2tail = new Player(color(50,110,110), -2, displaySize);    // Initializing targettail using the Player class
+  ttarget2taill = new Player(color(5,60,60), -2, displaySize);    // Initializing targettail using the Player class
 
-  kit = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit2 = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit3 = new Player(color(120,70,70), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit2 = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit3 = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
 
   controller = new Controller();            // Initializing controller
 

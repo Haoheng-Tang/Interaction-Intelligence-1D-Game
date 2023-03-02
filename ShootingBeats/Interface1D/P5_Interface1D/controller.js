@@ -73,8 +73,14 @@ class Controller {
                     targettail.position = -1;
                     targettaill.position = -1;
                     tdirect =0;
-                    playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
+                    //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
                     bass.play();
+                    if (playerTwo.position >= playerOne.position- 4 && playerTwo.position <= playerOne.position){
+                        playerTwo.move(-18);
+                    }
+                    if (playerTwo.position <= playerOne.position+ 4 && playerTwo.position >= playerOne.position){
+                        playerTwo.move(18);
+                    }
                 }
                 if(ttarget.position == playerTwo.position){
                     bloodTwo = bloodTwo- force;
@@ -82,8 +88,14 @@ class Controller {
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
                     ttdirect =0;
-                    playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
+                    //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
                     bass.play();
+                    if (playerTwo.position >= playerOne.position- 4 && playerTwo.position <= playerOne.position){
+                        playerTwo.move(-18);
+                    }
+                    if (playerTwo.position <= playerOne.position+ 4 && playerTwo.position >= playerOne.position){
+                        playerTwo.move(18);
+                    }
                 }
 
 
@@ -113,8 +125,14 @@ class Controller {
                     target2tail.position = -2;
                     target2taill.position = -2;
                     t2direct = 0;
-                    playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
+                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
                     bass.play();
+                    if (playerOne.position >= playerTwo.position- 4 && playerOne.position <= playerTwo.position){
+                        playerOne.move(-18);
+                    }
+                    if (playerOne.position <= playerTwo.position+ 4 && playerOne.position >= playerTwo.position){
+                        playerOne.move(18);
+                    }
                 }
                 if(ttarget2.position == playerOne.position){
                     bloodOne = bloodOne- force2;
@@ -122,8 +140,14 @@ class Controller {
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
                     tt2direct = 0;
-                    playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
+                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
                     bass.play();
+                    if (playerOne.position >= playerTwo.position- 4 && playerOne.position <= playerTwo.position){
+                        playerOne.move(-18);
+                    }
+                    if (playerOne.position <= playerTwo.position+ 4 && playerOne.position >= playerTwo.position){
+                        playerOne.move(18);
+                    }
                 }
 
 
@@ -434,9 +458,9 @@ function keyPressed() {
             drumbeat.play();
             if(num2 == 0){
                 force2 = 1;
-                target2.playerColor = color(120,235,235);
-                target2tail.playerColor = color(50,120,120);
-                target2taill.playerColor = color(5,70,70);
+                target2.playerColor = color(120,210,210);
+                target2tail.playerColor = color(50,110,110);
+                target2taill.playerColor = color(5,60,60);
             }
             if(num2 > 0){
                 force2 = 2;
@@ -454,9 +478,9 @@ function keyPressed() {
             drumbeat.play();
             if(num2 == 0){
                 force2 = 1;
-                ttarget2.playerColor = color(120,235,235);
-                ttarget2tail.playerColor = color(50,120,120);
-                ttarget2taill.playerColor = color(5,70,70);
+                ttarget2.playerColor = color(120,210,210);
+                ttarget2tail.playerColor = color(50,110,110);
+                ttarget2taill.playerColor = color(5,60,60);
             }
             if(num2 > 0){
                 force2 = 2;
@@ -481,9 +505,9 @@ function keyPressed() {
             drumbeat.play();
             if(num2 == 0){
                 force2 = 1;
-                target2.playerColor = color(120,235,235);
-                target2tail.playerColor = color(50,120,120);
-                target2taill.playerColor = color(5,70,70);
+                target2.playerColor = color(120,210,210);
+                target2tail.playerColor = color(50,110,110);
+                target2taill.playerColor = color(5,60,60);
             }
             if(num2 > 0){
                 force2 = 2;
@@ -501,9 +525,9 @@ function keyPressed() {
             drumbeat.play();
             if(num2 == 0){
                 force2 = 1;
-                ttarget2.playerColor = color(120,235,235);
-                ttarget2tail.playerColor = color(50,120,120);
-                ttarget2taill.playerColor = color(5,70,70);
+                ttarget2.playerColor = color(120,210,210);
+                ttarget2tail.playerColor = color(50,110,110);
+                ttarget2taill.playerColor = color(5,60,60);
             }
             if(num2 > 0){
                 force2 = 2;
@@ -525,7 +549,7 @@ function keyPressed() {
         bloodTwo = 10;
 
         playerOne.position = parseInt(random(0,displaySize));
-        playerOne.playerColor = color(255*10/bloodOne,140*10/bloodOne,40*10/bloodOne);
+        //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
         target.position =-1;
         targettail.position = -1;
         targettaill.position = -1;
@@ -538,7 +562,7 @@ function keyPressed() {
         num = 0;
 
         playerTwo.position = parseInt(random(0,displaySize));
-        playerTwo.playerColor = color(20*10/bloodTwo,200*10/bloodTwo,255*10/bloodTwo);
+        //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
         ttarget.position =-1;
         ttargettail.position = -1;
         ttargettaill.position = -1;
