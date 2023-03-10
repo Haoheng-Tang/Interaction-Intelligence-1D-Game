@@ -19,10 +19,10 @@ class Player {
         this.position = this.position + _direction;
       
         // once the pixel drops to the ground, loop around
-        if (this.position >= displaySize) {
+        if (this.position > displaySize-1) {
             this.position = 0;
         } 
-        else if(this.position <= 0){
+        else if(this.position < 0){
             this.position = displaySize-1;
         }
          

@@ -15,7 +15,7 @@ let displaySize = 70;   // how many pixels are visible in the game
 let pixelSize = 23;     // how big should they look on screen
 
 let playerOne;    // Adding playerOne to the game
-let bloodOne = 10; // The times that playOne can be hit by bullets
+let bloodOne = 30; // The times that playOne can be hit by bullets
 let target;       // and one target for players to catch.
 let targettail;   // tail1 following the target.
 let targettaill;  // tail2 following the target.
@@ -26,9 +26,13 @@ let ttargettaill; // tail2 following the second target.
 let ttdirect =0;   // second target 1 direction.
 let force = 1;     // to what extend that a bullet from playerOne will hurt playerTwo
 let num = 0;       // how many super bullets owned by playerOne
+let sequence = []; // Store button sequence
+let seqtimer = 0;  // Count time between presses
+let lazer = [];    // Lazer emitted by playerOne
+let lazertime = 0; // Count the lasting of lazer.
 
 let playerTwo;     // Adding playerTwo to the game
-let bloodTwo = 10;  // The times that playOne can be hit by bullets
+let bloodTwo = 30; // The times that playOne can be hit by bullets
 let target2;       // and aonther target for players to catch.
 let target2tail;   // tail1 following the target2.
 let target2taill;  // tail2 following the target2.
@@ -39,7 +43,15 @@ let ttarget2taill; // tail2 following the second target.
 let tt2direct =0;   // target 2 direction.  
 let force2 = 1;     // to what extend that a bullet from playerTwo will hurt playerOne
 let num2 = 0;       // how many super bullets owned by playerTwo
+let sequence2 = []; // Store button sequence
+let seqtimer2 = 0;  // Count time between presses
+let lazer2 = [];    // Lazer emitted by playerTwo
+let lazertime2 = 0; // Count the lasting of lazer2.
 
+
+let lazerlength = 20;  // lazer's length
+let seqthreshold = 5;  // sequnce threshold
+let remoteshot = 22;  // the distance from the remote-shot bullelt to the player
 let kit;          // a kit that can enhance the attack of a player
 let kit2;         // another kit that can enhance the attack of a player
 let kit3;         // another kit that can enhance the attack of a player
@@ -48,9 +60,9 @@ let display;      // Aggregates our final visual output before showing it on the
 
 let controller;   // This is where the state machine and game logic lives
 
-let drumbeat;     // Sound that will play when left clicked
+let drumbeat;     // Sound that will play 
 
-let drumroll;     // Sound that will play when right clicked
+let drumroll;     // Sound that will play 
 
 let wingame;      // Sound that will play in "SCORE" case
 
@@ -60,14 +72,15 @@ let hit;          // Sound that will play when a player pick up a kit
 
 let misfire;      // Sound that will play when the pixel drops
 
-let timer=0;        // count time
-
+let timer=0;       // Count time to distribute kits
 
 
 function preload(){
-  drumbeat = loadSound('drumbt.mp3');
-  drumroll = loadSound('drumroll.mp3');
+  drumbeat = loadSound('shooting.mp3');
+  drumroll = loadSound('drumbeat.mp3');
   bass = loadSound('drumbeat.mp3');
+  lazershoot = loadSound('lazershoot.mp3');
+  canonshoot = loadSound('canon.mp3');
   wingame = loadSound('wingame.mp3');
   bonus = loadSound('bonus.mp3');
   misfire = loadSound('game-ball-tap.mp3');
@@ -89,6 +102,9 @@ function setup() {
   ttargettail = new Player(color(120,120,80), -1, displaySize);    // Initializing targettail using the Player class
   ttargettaill = new Player(color(50,50,20), -1, displaySize);    // Initializing targettail using the Player class
 
+  for(let i=0; i<lazerlength; i++){
+    lazer.push(new Player(color(210-3*i,130-3*i,60-3*i), 100+i, displaySize));}   // Initializing lazer array emitted by playerOne
+
   target2 = new Player(color(120,210,210), -2, displaySize);    // Initializing target using the Player class
   target2tail = new Player(color(50,110,110), -2, displaySize);    // Initializing targettail using the Player class
   target2taill = new Player(color(5,60,60), -2, displaySize);    // Initializing targettail using the Player class
@@ -96,6 +112,9 @@ function setup() {
   ttarget2 = new Player(color(120,210,210), -2, displaySize);    // Initializing target using the Player class
   ttarget2tail = new Player(color(50,110,110), -2, displaySize);    // Initializing targettail using the Player class
   ttarget2taill = new Player(color(5,60,60), -2, displaySize);    // Initializing targettail using the Player class
+
+  for(let i=0; i<lazerlength; i++){
+    lazer2.push(new Player(color(60-3*i,120-3*i,190-3*i), 100+i, displaySize));}   // Initializing lazer array emitted by playerTwo
 
   kit = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
   kit2 = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
