@@ -15,7 +15,7 @@ let displaySize = 70;   // how many pixels are visible in the game
 let pixelSize = 23;     // how big should they look on screen
 
 let playerOne;    // Adding playerOne to the game
-let bloodOne = 30; // The times that playOne can be hit by bullets
+let bloodOne = 20; // The times that playOne can be hit by bullets
 let target;       // and one target for players to catch.
 let targettail;   // tail1 following the target.
 let targettaill;  // tail2 following the target.
@@ -32,7 +32,7 @@ let lazer = [];    // Lazer emitted by playerOne
 let lazertime = 0; // Count the lasting of lazer.
 
 let playerTwo;     // Adding playerTwo to the game
-let bloodTwo = 30; // The times that playOne can be hit by bullets
+let bloodTwo = 20; // The times that playOne can be hit by bullets
 let target2;       // and aonther target for players to catch.
 let target2tail;   // tail1 following the target2.
 let target2taill;  // tail2 following the target2.

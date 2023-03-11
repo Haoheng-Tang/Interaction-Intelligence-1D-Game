@@ -79,30 +79,37 @@ class Controller {
                     target.position =-1;
                     targettail.position = -1;
                     targettaill.position = -1;
-                    tdirect =0;
                     //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
                     }
-                    if (playerTwo.position <= playerOne.position+ 3 && playerTwo.position >= playerOne.position){
+                    else if (playerTwo.position <= playerOne.position+ 3 && playerTwo.position >= playerOne.position){
                         playerTwo.move(18);
                     }
+                    else{
+                        playerTwo.move(tdirect);
+                    }
+                    tdirect =0;
+
                 }
                 if(ttarget.position == playerTwo.position){
                     bloodTwo = bloodTwo- force;
                     ttarget.position =-1;
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
-                    ttdirect =0;
                     //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
                     }
-                    if (playerTwo.position <= playerOne.position+ 3 && playerTwo.position >= playerOne.position){
+                    else if (playerTwo.position <= playerOne.position+ 3 && playerTwo.position >= playerOne.position){
                         playerTwo.move(18);
                     }
+                    else{
+                        playerTwo.move(ttdirect);
+                    }
+                    ttdirect =0;
                 }
                 for (let i=0; i<lazerlength; i++){
                     if(lazer[i].position == playerTwo.position){
@@ -140,33 +147,39 @@ class Controller {
                 }
                 if(target2.position == playerOne.position){
                     bloodOne = bloodOne- force2;
+                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
-                    t2direct = 0;
-                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 4 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
                     }
-                    if (playerOne.position <= playerTwo.position+ 4 && playerOne.position >= playerTwo.position){
+                    else if (playerOne.position <= playerTwo.position+ 4 && playerOne.position >= playerTwo.position){
                         playerOne.move(18);
                     }
+                    else{
+                        playerOne.move(t2direct);
+                    }
+                    t2direct = 0;
                 }
                 if(ttarget2.position == playerOne.position){
                     bloodOne = bloodOne- force2;
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
-                    tt2direct = 0;
                     //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 3 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
                     }
-                    if (playerOne.position <= playerTwo.position+ 3 && playerOne.position >= playerTwo.position){
+                    else if (playerOne.position <= playerTwo.position+ 3 && playerOne.position >= playerTwo.position){
                         playerOne.move(18);
                     }
+                    else{
+                        playerOne.move(tt2direct);
+                    }
+                    tt2direct = 0;
                 }
                 for (let i=0; i<lazerlength; i++){
                     if(lazer2[i].position == playerOne.position){
