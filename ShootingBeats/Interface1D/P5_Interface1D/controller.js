@@ -24,34 +24,57 @@ class Controller {
                 // clear screen at frame rate so we always start fresh      
                 display.clear();
 
-                // now add the target and its tail
-                display.setPixel(target.position, target.playerColor);
-                display.setPixel(targettail.position, targettail.playerColor);
-                display.setPixel(targettaill.position, targettaill.playerColor);
-                display.setPixel(ttarget.position, ttarget.playerColor);
-                display.setPixel(ttargettail.position, ttargettail.playerColor);
-                display.setPixel(ttargettaill.position, ttargettaill.playerColor);
-                for(let i=0;i<lazerlength;i++){
-                    display.setPixel(lazer[i].position, lazer[i].playerColor);
-                }               
-                
-                display.setPixel(target2.position, target2.playerColor);
-                display.setPixel(target2tail.position, target2tail.playerColor);
-                display.setPixel(target2taill.position, target2taill.playerColor);
-                display.setPixel(ttarget2.position, ttarget2.playerColor);
-                display.setPixel(ttarget2tail.position, ttarget2tail.playerColor);
-                display.setPixel(ttarget2taill.position, ttarget2taill.playerColor);
-                for(let i=0;i<lazerlength;i++){
-                    display.setPixel(lazer2[i].position, lazer2[i].playerColor);
-                }       
-
+                // display kits
                 display.setPixel(kit.position, kit.playerColor);
                 display.setPixel(kit2.position, kit2.playerColor);
                 display.setPixel(kit3.position, kit2.playerColor);
 
+                // now add the lasers
+                for(let i=0;i<laserlength;i++){
+                    display.setPixel(laser[i].position, laser[i].playerColor);
+                }    
+                for(let i=0;i<laserlength;i++){
+                    display.setPixel(laser2[i].position, laser2[i].playerColor);
+                }  
+
+                // the targets and their tails
+                display.setPixel(targettaill.position, targettaill.playerColor);             
+                display.setPixel(ttargettaill.position, ttargettaill.playerColor);
+
+                display.setPixel(ttargettail.position, ttargettail.playerColor);
+                display.setPixel(targettail.position, targettail.playerColor);
+
+                display.setPixel(target.position, target.playerColor);
+                display.setPixel(ttarget.position, ttarget.playerColor);
+          
+
+                display.setPixel(target2taill.position, target2taill.playerColor);
+                display.setPixel(ttarget2taill.position, ttarget2taill.playerColor);
+
+                display.setPixel(target2tail.position, target2tail.playerColor);
+                display.setPixel(ttarget2tail.position, ttarget2tail.playerColor);
+
+                display.setPixel(target2.position, target2.playerColor);
+                display.setPixel(ttarget2.position, ttarget2.playerColor);
+
                 // show all players in the right place, by adding them to display buffer
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
+
+                // add explosion array
+                for(let i=0;i<displaySize;i++){
+                    display.setPixel(explosion[i].position, explosion[i].playerColor);
+                }
+                for(let i=displaySize;i<2*displaySize;i++){
+                    display.setPixel(explosion[i].position, explosion[i].playerColor);
+                }
+
+                for(let i=0;i<displaySize;i++){
+                    display.setPixel(explosion2[i].position, explosion[i].playerColor);
+                }
+                for(let i=displaySize;i<2*displaySize;i++){
+                    display.setPixel(explosion2[i].position, explosion[i].playerColor);
+                }
 
 
                 if (tdirect == -1){
@@ -79,7 +102,7 @@ class Controller {
                     target.position =-1;
                     targettail.position = -1;
                     targettaill.position = -1;
-                    //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
+                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -98,7 +121,7 @@ class Controller {
                     ttarget.position =-1;
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
-                    //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
+                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -111,9 +134,10 @@ class Controller {
                     }
                     ttdirect =0;
                 }
-                for (let i=0; i<lazerlength; i++){
-                    if(lazer[i].position == playerTwo.position){
+                for (let i=0; i<laserlength; i++){
+                    if(laser[i].position == playerTwo.position){
                         bloodTwo = bloodTwo- force;
+                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                         bass.play();
                         if (playerTwo.position > playerOne.position){
                             playerTwo.move(35);
@@ -121,6 +145,27 @@ class Controller {
                         if (playerTwo.position < playerOne.position){
                             playerTwo.move(-35);
                         }
+                        sequence = [];
+                    }
+                }
+                for (let i=0; i<2*displaySize; i++){
+                    if(explosion[i].position == playerTwo.position){
+                        bloodTwo = bloodTwo- 8;
+                        for(let i=0; i<displaySize; i++){
+                            explosion[i].position = 100+i}
+                        for(let i=displaySize; i<2*displaySize; i++){ 
+                            explosion[i].position = -100-i}
+                        sequence = [];
+                        num = num-2;
+                        target.position = -1;
+                        targettail.position = -1;
+                        targettaill.position = -1;
+                        ttarget.position = -1;
+                        ttargettail.position = -1;
+                        ttargettaill.position = -1;
+                        tdirect = 0;
+                        ttdirect = 0;
+
                     }
                 }
 
@@ -145,9 +190,10 @@ class Controller {
                     ttarget2tail.move(1);
                     ttarget2taill.move(1);
                 }
+
                 if(target2.position == playerOne.position){
                     bloodOne = bloodOne- force2;
-                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
+                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
@@ -168,7 +214,7 @@ class Controller {
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
-                    //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
+                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 3 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
@@ -181,9 +227,11 @@ class Controller {
                     }
                     tt2direct = 0;
                 }
-                for (let i=0; i<lazerlength; i++){
-                    if(lazer2[i].position == playerOne.position){
+                for (let i=0; i<laserlength; i++){
+                    if(laser2[i].position == playerOne.position){
                         bloodOne = bloodOne- force2;
+                        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+
                         bass.play();
                         if (playerOne.position > playerTwo.position){
                             playerOne.move(35);
@@ -191,6 +239,28 @@ class Controller {
                         if (playerOne.position < playerTwo.position){
                             playerOne.move(-35);
                         }
+                        sequence2 = [];
+                    }
+                }
+                for (let i=0; i<2*displaySize; i++){
+                    if(explosion2[i].position == playerOne.position){
+                        bloodOne = bloodOne- 8;
+                        for(let i=0; i<displaySize; i++){
+                            explosion[i].position = 100+i}
+                        for(let i=displaySize; i<2*displaySize; i++){ 
+                            explosion[i].position = -100-i}
+
+                        sequence2 = [];
+                        num2 = num2-2;
+                        target2.position = -2;
+                        target2tail.position = -2;
+                        target2taill.position = -2;
+                        ttarget2.position = -2;
+                        ttarget2tail.position = -2;
+                        ttarget2taill.position = -2;
+                        t2direct = 0;
+                        tt2direct = 0;
+
                     }
                 }
 
@@ -341,6 +411,9 @@ class Controller {
                     this.gameState = "SCORE";   // go to SCORE state
                 }
 
+
+                // All the time-related thing
+
                 timer++;
 
                 if(timer == 500){
@@ -356,15 +429,28 @@ class Controller {
                     timer = 0;
                 }
 
-                if(timer >= lazertime + 15){
-                    for(let i=0;i<lazerlength;i++){
-                        lazer[i].position = 100+i;
+                if(timer >= lasertime + 15){
+                    for(let i=0;i<laserlength;i++){
+                        laser[i].position = 100+i;
                     }     
                 }
-                if(timer >= lazertime2 + 15){
-                    for(let i=0;i<lazerlength;i++){
-                        lazer2[i].position = 100+i;
+                if(timer >= lasertime2 + 15){
+                    for(let i=0;i<laserlength;i++){
+                        laser2[i].position = 100+i;
                     }     
+                }
+
+                if(timer >= expltime + 15){
+                    for(let i=0; i<displaySize; i++){
+                        explosion[i].position = 100+i}
+                    for(let i=displaySize; i<2*displaySize; i++){ 
+                        explosion[i].position = -100-i}
+                }
+                if(timer >= expltime2 + 15){
+                    for(let i=0; i<displaySize; i++){
+                        explosion2[i].position = 100+i}
+                    for(let i=displaySize; i<2*displaySize; i++){ 
+                        explosion2[i].position = -100-i}  
                 }
 
                 seqtimer++;
@@ -376,7 +462,7 @@ class Controller {
             // Game is over. Show winner and clean everything up so we can start a new game.
             case "SCORE":       
 
-                //light up w/ winner color by populating all pixels in buffer with their color
+                //light up winner's color by populating all pixels in buffer with their color
                 if (bloodOne <= 0){
                     display.setAllPixels(color(20,200,255));
                 }
@@ -395,15 +481,32 @@ class Controller {
 
 
 
-function lazeratck(seq, lazr, key1, key2, user, direct){
+function laseratck(seq, lasr, key1, key2, user, direct){
     if (seq[seq.length-1] == key1 && seq[seq.length-2] == key2 && seq[seq.length-3] == key1 && seq[seq.length-4] == key1){
-        for(let i=0; i<lazerlength; i++){
-            lazr[i].position = user.position+i*direct;
+        for(let i=0; i<laserlength; i++){
+            lasr[i].position = user.position+i*direct;
         }
         seq = [];
         lazershoot.play();
     }
 }
+
+
+function explode(seq, exp, key1, key2, user, blood, n){
+    if (seq[seq.length-1] == key2 && seq[seq.length-2] == key1){
+        for(let i=0; i<displaySize; i++){
+            exp[i].position = user.position+i;
+        }
+        for(let i=displaySize; i<2*displaySize; i++){
+            exp[i].position = user.position-(i-displaySize);
+        }
+        blood = blood - 6;
+        n = n-2;
+        seq = [];
+        lazershoot.play();
+    }
+}
+
 
 function keyPressed() {
     // for playerOne
@@ -427,11 +530,11 @@ function keyPressed() {
         if (seqtimer< seqthreshold){
             sequence.push('F');
 
-            lazeratck(sequence, lazer, "F", "A", playerOne, -1);
+            laseratck(sequence, laser, "F", "A", playerOne, -1);
             if(timer < 485){
-                lazertime = timer;
+                lasertime = timer;
             }else{
-                lazertime = timer-500;
+                lasertime = timer-500;
             }
         }      
 
@@ -439,7 +542,7 @@ function keyPressed() {
                 tdirect=-1;
 
                 if(sequence[sequence.length-1]=="F" && sequence[sequence.length-2] == "A"){
-                    target.position = playerOne.position - 8;
+                    target.position = playerOne.position - remotedist;
                     targettail.position = target.position+1;
                     targettaill.position = target.position+2;
                     sequence = [];
@@ -465,13 +568,14 @@ function keyPressed() {
                     num--;
                     canonshoot.play();
                 }
+
             }
 
             else if(ttarget.position == -1){
                 ttdirect=-1;
 
                 if(sequence[sequence.length-1]=="F" && sequence[sequence.length-2] == "A"){
-                    ttarget.position = playerOne.position - 8;
+                    ttarget.position = playerOne.position - remotedist;
                     ttargettail.position = target.position+1;
                     ttargettaill.position = target.position+2;
                     sequence = [];
@@ -508,11 +612,11 @@ function keyPressed() {
     if (key == 'G' || key == 'g') {
         if (seqtimer< seqthreshold){
             sequence.push('G');
-            lazeratck(sequence, lazer, "G", "D", playerOne, 1);
+            laseratck(sequence, laser, "G", "D", playerOne, 1);
                 if(timer < 485){
-                    lazertime = timer;
+                    lasertime = timer;
                 }else{
-                    lazertime = timer-500;
+                    lasertime = timer-500;
                 }
         }      
 
@@ -520,7 +624,7 @@ function keyPressed() {
                 tdirect=1;
 
                 if(sequence[sequence.length-1]=="G" && sequence[sequence.length-2] == "D"){
-                    target.position = playerOne.position + 8;
+                    target.position = playerOne.position + remotedist;
                     targettail.position = target.position-1;
                     targettaill.position = target.position-2;
                     sequence = [];
@@ -539,12 +643,23 @@ function keyPressed() {
                     drumbeat.play();
                 }
                 if(num > 0){
-                    force = 2;
-                    target.playerColor = color(250, 80, 40);
-                    targettail.playerColor = color(170, 60, 20);
-                    targettaill.playerColor = color(120, 40, 5);
-                    num--;
-                    canonshoot.play();
+                    if(num >= 2){
+                        explode(sequence, explosion, "A", "G", playerOne, bloodTwo, num);
+                        if(timer < 485){
+                            expltime = timer;
+                        }else{
+                            expltime = timer-500;
+                        }
+                    }
+                    else{
+                        force = 2;
+                        target.playerColor = color(250, 80, 40);
+                        targettail.playerColor = color(170, 60, 20);
+                        targettaill.playerColor = color(120, 40, 5);
+                        num--;
+                        canonshoot.play();
+                    }
+
                 }
                 seqtimer = 0;
             }
@@ -552,7 +667,7 @@ function keyPressed() {
                 ttdirect=1;
 
                 if(sequence[sequence.length-1]=="G" && sequence[sequence.length-2] == "D"){
-                    ttarget.position = playerOne.position + 8;
+                    ttarget.position = playerOne.position + remotedist;
                     ttargettail.position = ttarget.position-1;
                     ttargettaill.position = ttarget.position-2;
                     sequence = [];
@@ -607,17 +722,11 @@ function keyPressed() {
     if (keyCode == '188') {  // key: <
         if (seqtimer2< seqthreshold){
             sequence2.push('188')
-            if (sequence2[sequence2.length-1] == "188" && sequence2[sequence2.length-2] == "37" && sequence2[sequence2.length-3] == "188" && sequence2[sequence2.length-4] == "188"){
-                for(let i=0; i<lazerlength; i++){
-                    lazer2[i].position = playerTwo.position-i;
-                }
-                if(timer < 485){
-                    lazertime2 = timer;
-                }else{
-                    lazertime2 = timer-500;
-                }
-                sequence2 = [];
-                lazershoot.play();
+            laseratck(sequence2, laser2, "188", "37", playerTwo, -1);
+            if(timer < 485){
+                lasertime2 = timer;
+            }else{
+                lasertime2 = timer-500;
             }
         }      
 
@@ -625,7 +734,7 @@ function keyPressed() {
                 t2direct=-1;
 
                 if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "37"){
-                    target2.position = playerTwo.position - 8;
+                    target2.position = playerTwo.position - remotedist;
                     target2tail.position = target2.position+1;
                     target2taill.position = target2.position+2;
                     sequence2 = [];
@@ -656,7 +765,7 @@ function keyPressed() {
                 tt2direct=-1;
 
                 if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "37"){
-                    tttarget2.position = playerTwo.position - 8;
+                    tttarget2.position = playerTwo.position - remotedist;
                     ttarget2tail.position = ttarget2.position+1;
                     ttarget2taill.position = ttarget2.position+2;
                     sequence2 = [];
@@ -693,17 +802,11 @@ function keyPressed() {
     if (keyCode == '190') {  //key: >
         if (seqtimer2< seqthreshold){
             sequence2.push('190')
-            if (sequence2[sequence2.length-1] == "190" && sequence2[sequence2.length-2] == "39" && sequence2[sequence2.length-3] == "190" && sequence2[sequence2.length-4] == "190"){
-                for(let i=0; i<lazerlength; i++){
-                    lazer2[i].position = playerTwo.position+i;
-                }
-                if(timer < 485){
-                    lazertime2 = timer;
-                }else{
-                    lazertime2 = timer-500;
-                }
-                sequence2 = [];
-                lazershoot.play();
+            laseratck(sequence2, laser2, "190", "39", playerTwo, 1);
+            if(timer < 485){
+                lasertime2 = timer;
+            }else{
+                lasertime2 = timer-500;
             }
         }      
 
@@ -711,7 +814,7 @@ function keyPressed() {
                 t2direct = 1;
 
                 if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "39"){
-                    target2.position = playerTwo.position + 8;
+                    target2.position = playerTwo.position + remotedist;
                     target2tail.position = target2.position-1;
                     target2taill.position = target2.position-2;
                     sequence2 = [];
@@ -730,12 +833,22 @@ function keyPressed() {
                     drumbeat.play();
                 }
                 if(num2 > 0){
-                    force2 = 2;
-                    target2.playerColor = color(210, 60, 230);
-                    target2tail.playerColor = color(150, 40, 150);
-                    target2taill.playerColor = color(100, 20, 100);
-                    num2--;
-                    canonshoot.play();
+                    if(num >= 2){
+                        explode(sequence, explosion, "37", "190", playerTwo, bloodOne, num2);
+                        if(timer < 485){
+                            expltime2 = timer;
+                        }else{
+                            expltime2 = timer-500;
+                        }
+                    }
+                    else{
+                        force2 = 2;
+                        target2.playerColor = color(210, 60, 230);
+                        target2tail.playerColor = color(150, 40, 150);
+                        target2taill.playerColor = color(100, 20, 100);
+                        num2--;
+                        canonshoot.play();
+                    }
                 }
             }
 
@@ -743,7 +856,7 @@ function keyPressed() {
                 tt2direct = 1;
 
                 if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "39"){
-                    ttarget2.position = playerTwo.position + 8;
+                    ttarget2.position = playerTwo.position + remotedist;
                     ttarget2tail.position = ttarget2.position-1;
                     ttarget2taill.position = ttarget2.position-2;
                     sequence2 = [];
@@ -779,11 +892,11 @@ function keyPressed() {
 
     // When you press the letter R, the game resets back to the play state
     if (key == 'R' || key == 'r') {
-        bloodOne = 20;
-        bloodTwo = 20;
+        bloodOne = life;
+        bloodTwo = life;
 
         playerOne.position = parseInt(random(0,displaySize));
-        //playerOne.playerColor = color(255*bloodOne/10,140*bloodOne/10,40*bloodOne/10);
+        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
         target.position =-1;
         targettail.position = -1;
         targettaill.position = -1;
@@ -795,12 +908,16 @@ function keyPressed() {
         force = 1;
         num = 0;
         sequence = [];
-        for(let i=0; i<lazerlength; i++){
-            lazer[i].position = 100+i;
+        for(let i=0; i<laserlength; i++){
+            laser[i].position = 100+i;
         }
+        for(let i=0; i<displaySize; i++){
+            explosion[i].position = 100+i}
+        for(let i=displaySize; i<2*displaySize; i++){ 
+            explosion[i].position = -100-i}
 
         playerTwo.position = parseInt(random(0,displaySize));
-        //playerTwo.playerColor = color(20*bloodTwo/10,200*bloodTwo/10,255*bloodTwo/10);
+        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
         ttarget.position =-1;
         ttargettail.position = -1;
         ttargettaill.position = -1;
@@ -812,9 +929,13 @@ function keyPressed() {
         force2 = 1;
         num2 = 0;
         sequence2 = [];
-        for(let i=0; i<lazerlength; i++){
-            lazer2[i].position = 100+i;
+        for(let i=0; i<laserlength; i++){
+            laser2[i].position = 100+i;
         }
+        for(let i=0; i<displaySize; i++){
+            explosion2[i].position = 100+i}
+        for(let i=displaySize; i<2*displaySize; i++){ 
+            explosion2[i].position = -100-i}
 
         kit.position = parseInt(random(0,displaySize));
         kit2.position = parseInt(random(0,displaySize));
