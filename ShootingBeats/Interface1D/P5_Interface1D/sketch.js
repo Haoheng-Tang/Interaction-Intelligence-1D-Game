@@ -32,7 +32,7 @@ let seqtimer = 0;  // Count time between presses
 let laser = [];    // laser emitted by playerOne
 let lasertime = 0; // Count the lasting of laser.
 let explosion = []; // explosion caused by playerOne
-let expltime = 0; // Count the lasting of laser.
+let expltime = 0; // Count the lasting of explosion.
 
 let playerTwo;     // Adding playerTwo to the game
 let bloodTwo = life; // The times that playOne can be hit by bullets
@@ -51,7 +51,7 @@ let seqtimer2 = 0;  // Count time between presses
 let laser2 = [];    // laser emitted by playerTwo
 let lasertime2 = 0; // Count the lasting of lazer2.
 let explosion2 = []; // explosion caused by playerTwo
-let expltime2 = 0; // Count the lasting of laser.
+let expltime2 = 0; // Count the lasting of explosion.
 
 
 let laserlength = 20;  // laser's length
@@ -84,13 +84,13 @@ function preload(){
 }
 
 function setup() {
-  let targtColor = color(220,220,140);
-  let targtailColor = color(120,120,80);
-  let targtaillColor = color(50,50,20);
+  let targtColor = color(220/1.5,220/1.5,140/1.5);
+  let targtailColor = color(120/1.5,120/1.5,80/1.5);
+  let targtaillColor = color(50/1.5,50/1.5,20/1.5);
 
-  let targt2Color = color(120,210,210);
-  let targ2tailColor = color(50,110,110);
-  let targ2taillColor = color(5,60,60);
+  let targt2Color = color(120/1.5,210/1.5,210/1.5);
+  let targ2tailColor = color(50/1.5,110/1.5,110/1.5);
+  let targ2taillColor = color(5/1.5,60/1.5,60/1.5);
  
 
   createCanvas((displaySize*pixelSize), pixelSize);     // dynamically sets canvas size
