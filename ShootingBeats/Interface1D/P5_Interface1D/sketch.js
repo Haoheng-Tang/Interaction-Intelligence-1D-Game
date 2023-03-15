@@ -71,9 +71,9 @@ let hit;          // Sound that will play when a player pick up a kit
 let misfire;      // Sound that will play when the pixel drops
 let timer=0;       // Count time to distribute kits
 
-
+//Sound effect
 function preload(){
-  drumbeat = loadSound('shooting.mp3');
+  drumbeat = loadSound('short_shot.mp3');
   drumroll = loadSound('drumbeat.mp3');
   bass = loadSound('drumbeat.mp3');
   lazershoot = loadSound('lazershoot.mp3');
