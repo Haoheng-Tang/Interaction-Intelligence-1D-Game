@@ -154,6 +154,8 @@ class Controller {
                 for (let i=0; i<2*displaySize; i++){
                     if(explosion[i].position == playerTwo.position){
                         bloodTwo = bloodTwo- 8;
+                        playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+
                         for(let i=0; i<displaySize; i++){
                             explosion[i].position = 100+i}
                         for(let i=displaySize; i<2*displaySize; i++){ 
@@ -250,6 +252,8 @@ class Controller {
                 for (let i=0; i<2*displaySize; i++){
                     if(explosion2[i].position == playerOne.position){
                         bloodOne = bloodOne- 8;
+                        playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+
                         for(let i=0; i<displaySize; i++){
                             explosion2[i].position = 100+i}
                         for(let i=displaySize; i<2*displaySize; i++){ 
@@ -420,7 +424,7 @@ class Controller {
 
                 timer++;
 
-                if(timer == 500){
+                if(timer == 250 || timer == 500){
                     if(kit.position == -10){
                         kit.position = parseInt(random(0,displaySize));
                     }
@@ -430,6 +434,9 @@ class Controller {
                     if(kit3.position == -10){
                         kit3.position = parseInt(random(0,displaySize));
                     }
+                }
+
+                if(timer == 500){
                     timer = 0;
                 }
 
@@ -495,7 +502,7 @@ function laseratck(seq, lasr, key1, key2, user, direct){
             lasr[i].position = user.position+i*direct;
         }
         seq = [];
-        lazershoot.play();
+        lasershoot.play();
     }
 }
 
@@ -508,7 +515,7 @@ function explode(seq, exp, key1, key2, user){
         for(let i=displaySize; i<2*displaySize; i++){
             exp[i].position = user.position-(i-displaySize);
         }
-        lazershoot.play();
+        laserexpl.play();
     }
 }
 

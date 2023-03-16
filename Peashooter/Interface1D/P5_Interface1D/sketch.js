@@ -76,7 +76,8 @@ function preload(){
   drumbeat = loadSound('short_shot.mp3');
   drumroll = loadSound('drumbeat.mp3');
   bass = loadSound('drumbeat.mp3');
-  lazershoot = loadSound('lazershoot.mp3');
+  laserexpl = loadSound('lasers.mp3');
+  lasershoot = loadSound('laser_game_whip.mp3');
   canonshoot = loadSound('canon.mp3');
   wingame = loadSound('wingame.mp3');
   bonus = loadSound('bonus.mp3');
