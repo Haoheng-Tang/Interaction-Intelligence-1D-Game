@@ -102,8 +102,8 @@ class Controller {
                     target.position =-1;
                     targettail.position = -1;
                     targettaill.position = -1;
-                    //playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                    playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                    //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -122,8 +122,8 @@ class Controller {
                     ttarget.position =-1;
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
-                    //playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                    playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                    //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -139,8 +139,8 @@ class Controller {
                 for (let i=0; i<laserlength; i++){
                     if(laser[i].position == playerTwo.position){
                         bloodTwo = bloodTwo- force;
-                        //playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                        playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                         bass.play();
                         if (playerTwo.position > playerOne.position){
                             playerTwo.move(35);
@@ -154,8 +154,8 @@ class Controller {
                 for (let i=0; i<2*displaySize; i++){
                     if(explosion[i].position == playerTwo.position){
                         bloodTwo = bloodTwo- 8;
-                        playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
-
+                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                         for(let i=0; i<displaySize; i++){
                             explosion[i].position = 100+i}
                         for(let i=displaySize; i<2*displaySize; i++){ 
@@ -197,8 +197,8 @@ class Controller {
 
                 if(target2.position == playerOne.position){
                     bloodOne = bloodOne- force2;
-                    //playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                    playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                    //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
@@ -219,8 +219,8 @@ class Controller {
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
-                    //playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                    playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                    //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 3 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
@@ -236,8 +236,8 @@ class Controller {
                 for (let i=0; i<laserlength; i++){
                     if(laser2[i].position == playerOne.position){
                         bloodOne = bloodOne- force2;
-                        //playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                        playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+                        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                        //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
 
                         bass.play();
                         if (playerOne.position > playerTwo.position){
@@ -497,7 +497,7 @@ class Controller {
 
 
 function laseratck(seq, lasr, key1, key2, user, direct){
-    if (seq[seq.length-1] == key1 && seq[seq.length-2] == key2 && seq[seq.length-3] == key1 && seq[seq.length-4] == key1){
+    if (seq[seq.length-1] == key1 && seq[seq.length-2] == key2 && seq[seq.length-3] == key1){
         for(let i=0; i<laserlength; i++){
             lasr[i].position = user.position+i*direct;
         }
@@ -908,8 +908,8 @@ function keyPressed() {
         bloodTwo = life;
 
         playerOne.position = parseInt(random(0,displaySize));
-        //playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-        playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+        //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
         target.position =-1;
         targettail.position = -1;
         targettaill.position = -1;
@@ -930,8 +930,8 @@ function keyPressed() {
             explosion[i].position = -100-i}
 
         playerTwo.position = parseInt(random(0,displaySize));
-        //playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-        playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
         ttarget.position =-1;
         ttargettail.position = -1;
         ttargettaill.position = -1;
