@@ -27,7 +27,9 @@ class Controller {
                 // display kits
                 display.setPixel(kit.position, kit.playerColor);
                 display.setPixel(kit2.position, kit2.playerColor);
-                display.setPixel(kit3.position, kit2.playerColor);
+                display.setPixel(kit3.position, kit3.playerColor);
+                display.setPixel(kit4.position, kit4.playerColor);
+                display.setPixel(kit5.position, kit5.playerColor);
 
                 // now add the lasers
                 for(let i=0;i<laserlength;i++){
@@ -36,6 +38,21 @@ class Controller {
                 for(let i=0;i<laserlength;i++){
                     display.setPixel(laser2[i].position, laser2[i].playerColor);
                 }  
+
+                // add explosion array
+                for(let i=0;i<displaySize;i++){
+                    display.setPixel(explosion[i].position, explosion[i].playerColor);
+                }
+                for(let i=displaySize;i<2*displaySize;i++){
+                    display.setPixel(explosion[i].position, explosion[i].playerColor);
+                }
+
+                for(let i=0;i<displaySize;i++){
+                    display.setPixel(explosion2[i].position, explosion2[i].playerColor);
+                }
+                for(let i=displaySize;i<2*displaySize;i++){
+                    display.setPixel(explosion2[i].position, explosion2[i].playerColor);
+                }
 
                 // the targets and their tails
                 display.setPixel(targettaill.position, targettaill.playerColor);             
@@ -61,20 +78,6 @@ class Controller {
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
 
-                // add explosion array
-                for(let i=0;i<displaySize;i++){
-                    display.setPixel(explosion[i].position, explosion[i].playerColor);
-                }
-                for(let i=displaySize;i<2*displaySize;i++){
-                    display.setPixel(explosion[i].position, explosion[i].playerColor);
-                }
-
-                for(let i=0;i<displaySize;i++){
-                    display.setPixel(explosion2[i].position, explosion2[i].playerColor);
-                }
-                for(let i=displaySize;i<2*displaySize;i++){
-                    display.setPixel(explosion2[i].position, explosion2[i].playerColor);
-                }
 
 
                 if (tdirect == -1){
@@ -97,7 +100,7 @@ class Controller {
                     ttargettail.move(1);
                     ttargettaill.move(1);
                 }
-                if(target.position == playerTwo.position){
+                if(target.position == playerTwo.position || (target.position +1 == playerTwo.position && tdirect < 0) || (target.position-1 == playerTwo.position && tdirect > 0)){
                     bloodTwo = bloodTwo - force;
                     target.position =-1;
                     targettail.position = -1;
@@ -117,7 +120,7 @@ class Controller {
                     tdirect =0;
 
                 }
-                if(ttarget.position == playerTwo.position){
+                if(ttarget.position == playerTwo.position  || (ttarget.position +1 == playerTwo.position && ttdirect < 0) || (ttarget.position-1 == playerTwo.position && ttdirect > 0)){
                     bloodTwo = bloodTwo- force;
                     ttarget.position =-1;
                     ttargettail.position = -1;
@@ -152,14 +155,10 @@ class Controller {
                     }
                 }
                 for (let i=0; i<2*displaySize; i++){
-                    if(explosion[i].position == playerTwo.position){
+                    if(explosion[i].position == playerTwo.position && explhurt == true){
                         bloodTwo = bloodTwo- 8;
-                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
-                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                        for(let i=0; i<displaySize; i++){
-                            explosion[i].position = 100+i}
-                        for(let i=displaySize; i<2*displaySize; i++){ 
-                            explosion[i].position = -100-i}
+                        explhurt = false;
+                        playerTwo.playerColor = color(250, 10, 10);
                         sequence = [];
                         num = num-2;
                         target.position = -1;
@@ -170,6 +169,15 @@ class Controller {
                         ttargettaill.position = -1;
                         tdirect = 0;
                         ttdirect = 0;
+                        setTimeout(function(){
+                            for(let i=0; i<displaySize; i++){
+                                explosion[i].position = 100+i}
+                            for(let i=displaySize; i<2*displaySize; i++){ 
+                                explosion[i].position = -100-i}
+                            explhurt = true;
+                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
+                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                        },1000)
                     }
                 }
 
@@ -195,7 +203,7 @@ class Controller {
                     ttarget2taill.move(1);
                 }
 
-                if(target2.position == playerOne.position){
+                if(target2.position == playerOne.position || (target2.position+1 == playerOne.position && t2direct < 0) || (target2.position-1 == playerOne.position && t2direct > 0)){
                     bloodOne = bloodOne- force2;
                     playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
                     //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
@@ -214,7 +222,7 @@ class Controller {
                     }
                     t2direct = 0;
                 }
-                if(ttarget2.position == playerOne.position){
+                if(ttarget2.position == playerOne.position || (ttarget2.position +1 == playerOne.position && tt2direct <0)|| (ttarget2.position-1 == playerOne.position && tt2direct >0)){
                     bloodOne = bloodOne- force2;
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
@@ -250,14 +258,10 @@ class Controller {
                     }
                 }
                 for (let i=0; i<2*displaySize; i++){
-                    if(explosion2[i].position == playerOne.position){
+                    if(explosion2[i].position == playerOne.position && explhurt2 == true){
                         bloodOne = bloodOne- 8;
-                        playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
-
-                        for(let i=0; i<displaySize; i++){
-                            explosion2[i].position = 100+i}
-                        for(let i=displaySize; i<2*displaySize; i++){ 
-                            explosion2[i].position = -100-i}
+                        playerOne.playerColor = color(250,10,10);
+                        explhurt2 = false;
                         sequence2 = [];
                         num2 = num2-2;
                         target2.position = -1;
@@ -268,6 +272,15 @@ class Controller {
                         ttarget2taill.position = -1;
                         t2direct = 0;
                         tt2direct = 0;
+                        setTimeout(function(){
+                            for(let i=0; i<displaySize; i++){
+                                explosion2[i].position = 100+i}
+                            for(let i=displaySize; i<2*displaySize; i++){ 
+                                explosion2[i].position = -100-i}
+                            explhurt2 = true;
+                            //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
+                            playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                        },1000)
                     }
                 }
 
@@ -396,6 +409,17 @@ class Controller {
                     kit3.position = -10;
                     num++;
                 }
+                if(playerOne.position == kit4.position){
+                    bonus.play();
+                    kit4.position = -10;
+                    num++;
+                }
+                if(playerOne.position == kit5.position){
+                    bonus.play();
+                    kit5.position = -10;
+                    num++;
+                }
+
 
                 if(playerTwo.position == kit.position){
                     bonus.play();
@@ -410,6 +434,16 @@ class Controller {
                 if(playerTwo.position == kit3.position){
                     bonus.play();
                     kit3.position = -10;
+                    num2++;
+                }
+                if(playerTwo.position == kit4.position){
+                    bonus.play();
+                    kit4.position = -10;
+                    num2++;
+                }
+                if(playerTwo.position == kit5.position){
+                    bonus.play();
+                    kit5.position = -10;
                     num2++;
                 }
 
@@ -433,6 +467,12 @@ class Controller {
                     }
                     if(kit3.position == -10){
                         kit3.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit4.position == -10){
+                        kit4.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit5.position == -10){
+                        kit5.position = parseInt(random(0,displaySize));
                     }
                 }
 
@@ -954,6 +994,8 @@ function keyPressed() {
         kit.position = parseInt(random(0,displaySize));
         kit2.position = parseInt(random(0,displaySize));
         kit3.position = parseInt(random(0,displaySize));
+        kit4.position = parseInt(random(0,displaySize));
+        kit5.position = parseInt(random(0,displaySize));
 
         controller.gameState = "PLAY";
     }

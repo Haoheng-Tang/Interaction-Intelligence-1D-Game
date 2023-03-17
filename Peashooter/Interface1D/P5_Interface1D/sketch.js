@@ -33,6 +33,7 @@ let laser = [];    // laser emitted by playerOne
 let lasertime = 0; // Count the lasting of laser.
 let explosion = []; // explosion caused by playerOne
 let expltime = 0; // Count the lasting of explosion.
+let explhurt = true;  // to define whether the explosion will hurt playerTwo
 
 let playerTwo;     // Adding playerTwo to the game
 let bloodTwo = life; // The times that playOne can be hit by bullets
@@ -52,6 +53,7 @@ let laser2 = [];    // laser emitted by playerTwo
 let lasertime2 = 0; // Count the lasting of lazer2.
 let explosion2 = []; // explosion caused by playerTwo
 let expltime2 = 0; // Count the lasting of explosion.
+let explhurt2 = true;  // to define whether the explosion will hurt playerOne
 
 
 let laserlength = 20;  // laser's length
@@ -133,9 +135,11 @@ function setup() {
   for(let i=displaySize; i<2*displaySize; i++){
     explosion2.push(new Player(color(60-i+displaySize,120-i+displaySize,190-i+displaySize), -100-i, displaySize));}   // Initializing explosion array caused by playerTwo
 
-  kit = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit2 = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
-  kit3 = new Player(color(90,90,90), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit2 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit3 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit4 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit5 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
 
   controller = new Controller();            // Initializing controller
 
