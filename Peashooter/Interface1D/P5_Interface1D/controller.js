@@ -755,18 +755,18 @@ function keyPressed() {
     }   
 
     //For playerTwo
-    if (keyCode == '37') {   //Left arrow
+    if (key == 'N' || key == 'n') {   //Left arrow
         playerTwo.move(-1);
         if (seqtimer2 < seqthreshold){
-            sequence2.push('37')
+            sequence2.push('N')
         }
     }
     seqtimer2 = 0;
 
-    if (keyCode == '39') {   //Right arrow
+    if (key == 'M' || key == 'm') {   //Right arrow
         playerTwo.move(1);
         if (seqtimer2 < seqthreshold){
-            sequence2.push('39')
+            sequence2.push('M')
         }
         seqtimer2 = 0;
     }   
@@ -774,7 +774,7 @@ function keyPressed() {
     if (keyCode == '188') {  // key: <
         if (seqtimer2< seqthreshold){
             sequence2.push('188')
-            laseratck(sequence2, laser2, "188", "37", playerTwo, -1);
+            laseratck(sequence2, laser2, "188", "N", playerTwo, -1);
             if(timer < 485){
                 lasertime2 = timer;
             }else{
@@ -785,7 +785,7 @@ function keyPressed() {
             if(target2.position == -2){
                 t2direct=-1;
 
-                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "37"){
+                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "N"){
                     target2.position = playerTwo.position - remotedist;
                     target2tail.position = target2.position+1;
                     target2taill.position = target2.position+2;
@@ -816,7 +816,7 @@ function keyPressed() {
             else if(ttarget2.position == -2){
                 tt2direct=-1;
 
-                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "37"){
+                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "N"){
                     tttarget2.position = playerTwo.position - remotedist;
                     ttarget2tail.position = ttarget2.position+1;
                     ttarget2taill.position = ttarget2.position+2;
@@ -854,7 +854,7 @@ function keyPressed() {
     if (keyCode == '190') {  //key: >
         if (seqtimer2< seqthreshold){
             sequence2.push('190')
-            laseratck(sequence2, laser2, "190", "39", playerTwo, 1);
+            laseratck(sequence2, laser2, "190", "M", playerTwo, 1);
             if(timer < 485){
                 lasertime2 = timer;
             }else{
@@ -865,7 +865,7 @@ function keyPressed() {
             if(target2.position == -2){
                 t2direct = 1;
 
-                if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "39"){
+                if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "M"){
                     target2.position = playerTwo.position + remotedist;
                     target2tail.position = target2.position-1;
                     target2taill.position = target2.position-2;
@@ -886,7 +886,7 @@ function keyPressed() {
                 }
                 if(num2 > 0){
                     if(num2 >= 2){
-                        explode(sequence2, explosion2, "37", "190", playerTwo);
+                        explode(sequence2, explosion2, "N", "190", playerTwo);
                         if(timer < 485){
                             expltime2 = timer;
                         }else{
@@ -907,7 +907,7 @@ function keyPressed() {
             else if(ttarget2.position == -2){
                 tt2direct = 1;
 
-                if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "39"){
+                if(sequence2[sequence2.length-1]=="190" && sequence2[sequence2.length-2] == "M"){
                     ttarget2.position = playerTwo.position + remotedist;
                     ttarget2tail.position = ttarget2.position-1;
                     ttarget2taill.position = ttarget2.position-2;
