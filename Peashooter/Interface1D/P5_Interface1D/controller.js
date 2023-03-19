@@ -78,6 +78,21 @@ class Controller {
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
 
+                //move function
+                //playerOne: a&d
+                if(keyIsDown(65) && seqtimer%2 == 0 && seqtimer>0){
+                    playerOne.move(-1);
+                }
+                if(keyIsDown(68) && seqtimer%2 == 0 && seqtimer>0){
+                    playerOne.move(1);
+                }
+                //playerTwo: n&m
+                if(keyIsDown(78) && seqtimer2%2 == 0 && seqtimer2>0){
+                    playerTwo.move(-1);
+                }
+                if(keyIsDown(77) && seqtimer2%2 == 0 && seqtimer2>0){
+                    playerTwo.move(1);
+                }
 
 
                 if (tdirect == -1){
@@ -140,8 +155,9 @@ class Controller {
                     ttdirect =0;
                 }
                 for (let i=0; i<laserlength; i++){
-                    if(laser[i].position == playerTwo.position){
+                    if(laser[i].position == playerTwo.position && laserhurt == true){
                         bloodTwo = bloodTwo- force;
+                        laserhurt = false;
                         playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                         //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                         bass.play();
@@ -152,6 +168,9 @@ class Controller {
                             playerTwo.move(-35);
                         }
                         sequence = [];
+                        setTimeout(function(){
+                            laserhurt == true;
+                        },2000)
                     }
                 }
                 for (let i=0; i<2*displaySize; i++){
@@ -244,6 +263,7 @@ class Controller {
                 for (let i=0; i<laserlength; i++){
                     if(laser2[i].position == playerOne.position){
                         bloodOne = bloodOne- force2;
+                        laserhurt2 = false;
                         playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
                         //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
 
@@ -255,6 +275,9 @@ class Controller {
                             playerOne.move(-35);
                         }
                         sequence2 = [];
+                        setTimeout(function(){
+                            laserhurt2 = true;
+                        },2000)
                     }
                 }
                 for (let i=0; i<2*displaySize; i++){
@@ -541,7 +564,6 @@ function laseratck(seq, lasr, key1, key2, user, direct){
         for(let i=0; i<laserlength; i++){
             lasr[i].position = user.position+i*direct;
         }
-        seq = [];
         lasershoot.play();
     }
 }
@@ -558,7 +580,6 @@ function explode(seq, exp, key1, key2, user){
         laserexpl.play();
     }
 }
-
 
 function keyPressed() {
     // for playerOne

@@ -15,7 +15,7 @@ let displaySize = 70;   // how many pixels are visible in the game
 let pixelSize = 23;     // how big should they look on screen
 
 let playerOne;    // Adding playerOne to the game
-let life = 20;    // life of player
+let life = 30;    // life of player
 let bloodOne = life; // The times that playOne can be hit by bullets
 let target;       // and one target for players to catch.
 let targettail;   // tail1 following the target.
@@ -31,6 +31,7 @@ let sequence = []; // Store button sequence
 let seqtimer = 0;  // Count time between presses
 let laser = [];    // laser emitted by playerOne
 let lasertime = 0; // Count the lasting of laser.
+let laserhurt = true; // to define whether the laser will hurt playerTwo
 let explosion = []; // explosion caused by playerOne
 let expltime = 0; // Count the lasting of explosion.
 let explhurt = true;  // to define whether the explosion will hurt playerTwo
@@ -51,6 +52,7 @@ let sequence2 = []; // Store button sequence
 let seqtimer2 = 0;  // Count time between presses
 let laser2 = [];    // laser emitted by playerTwo
 let lasertime2 = 0; // Count the lasting of lazer2.
+let laserhurt2 = true; // to define whether the laser will hurt playerOne
 let explosion2 = []; // explosion caused by playerTwo
 let expltime2 = 0; // Count the lasting of explosion.
 let explhurt2 = true;  // to define whether the explosion will hurt playerOne
