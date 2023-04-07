@@ -86,8 +86,8 @@ class Controller {
                 if(keyIsDown(68) && seqtimer%2 == 0 && seqtimer>0){
                     playerOne.move(1);
                 }
-                //playerTwo: n&m
-                if(keyIsDown(78) && seqtimer2%2 == 0 && seqtimer2>0){
+                //playerTwo: b&m
+                if(keyIsDown(66) && seqtimer2%2 == 0 && seqtimer2>0){
                     playerTwo.move(-1);
                 }
                 if(keyIsDown(77) && seqtimer2%2 == 0 && seqtimer2>0){
@@ -121,7 +121,6 @@ class Controller {
                     targettail.position = -1;
                     targettaill.position = -1;
                     playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                    //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -141,7 +140,6 @@ class Controller {
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
                     playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                    //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -159,7 +157,6 @@ class Controller {
                         bloodTwo = bloodTwo- force;
                         laserhurt = false;
                         playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                         bass.play();
                         if (playerTwo.position > playerOne.position){
                             playerTwo.move(35);
@@ -169,7 +166,7 @@ class Controller {
                         }
                         sequence = [];
                         setTimeout(function(){
-                            laserhurt == true;
+                            laserhurt = true;
                         },2000)
                     }
                 }
@@ -194,7 +191,6 @@ class Controller {
                             for(let i=displaySize; i<2*displaySize; i++){ 
                                 explosion[i].position = -100-i}
                             explhurt = true;
-                        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
                         playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
                         },1000)
                     }
@@ -225,7 +221,6 @@ class Controller {
                 if(target2.position == playerOne.position || (target2.position+1 == playerOne.position && t2direct < 0) || (target2.position-1 == playerOne.position && t2direct > 0)){
                     bloodOne = bloodOne- force2;
                     playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                    //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
@@ -247,7 +242,6 @@ class Controller {
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
                     playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                    //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 3 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
@@ -261,11 +255,10 @@ class Controller {
                     tt2direct = 0;
                 }
                 for (let i=0; i<laserlength; i++){
-                    if(laser2[i].position == playerOne.position){
+                    if(laser2[i].position == playerOne.position && laserhurt2 == true){
                         bloodOne = bloodOne- force2;
                         laserhurt2 = false;
                         playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-                        //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
 
                         bass.play();
                         if (playerOne.position > playerTwo.position){
@@ -301,7 +294,6 @@ class Controller {
                             for(let i=displaySize; i<2*displaySize; i++){ 
                                 explosion2[i].position = -100-i}
                             explhurt2 = true;
-                            //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
                             playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
                         },1000)
                     }
@@ -311,13 +303,13 @@ class Controller {
 
 
                 if(target.position == target2.position || target.position == target2tail.position || target.position == target2taill.position || target2.position == targettail.position || target2.position == targettaill.position){
-                    if(target.playerColor.levels[0] == 250/1.5 && target2.playerColor.levels[0] != 210/1.5){
+                    if(target.playerColor.levels[0] == 167 && target2.playerColor.levels[0] != 140){
                         target2.position =-2;
                         target2tail.position = -2;
                         target2taill.position = -2;
                         t2direct = 0;
                     }
-                    else if(target.playerColor.levels[0] != 250/1.5 && target2.playerColor.levels[0] == 210/1.5){
+                    else if(target.playerColor.levels[0] != 167 && target2.playerColor.levels[0] == 140){
                         target.position =-1;
                         targettail.position = -1;
                         targettaill.position = -1;
@@ -338,13 +330,13 @@ class Controller {
                 }
 
                 if(target.position == ttarget2.position || target.position == ttarget2tail.position || target.position == ttarget2taill.position || ttarget2.position == targettail.position || ttarget2.position == targettaill.position){
-                    if(target.playerColor.levels[0] == 250/1.5 && ttarget2.playerColor.levels[0] != 210/1.5){
+                    if(target.playerColor.levels[0] == 167 && ttarget2.playerColor.levels[0] != 140){
                         ttarget2.position =-2;
                         ttarget2tail.position = -2;
                         ttarget2taill.position = -2;
                         tt2direct = 0;
                     }
-                    else if(target.playerColor.levels[0] != 250/1.5 && ttarget2.playerColor.levels[0] == 210/1.5){
+                    else if(target.playerColor.levels[0] != 167 && ttarget2.playerColor.levels[0] == 140){
                         target.position =-1;
                         targettail.position = -1;
                         targettaill.position = -1;
@@ -364,13 +356,13 @@ class Controller {
                 }
                 
                 if(ttarget.position == target2.position || ttarget.position == target2tail.position || ttarget.position == target2taill.position || target2.position == ttargettail.position || target2.position == ttargettaill.position){
-                    if(ttarget.playerColor.levels[0] != 250/1.5 && target2.playerColor.levels[0] == 210/1.5){
+                    if(ttarget.playerColor.levels[0] != 167 && target2.playerColor.levels[0] == 140){
                         ttarget.position =-1;
                         ttargettail.position = -1;
                         ttargettaill.position = -1;
                         ttdirect =0;
                     }
-                    else if(ttarget.playerColor.levels[0] == 250/1.5 && target2.playerColor.levels[0] != 210/1.5){
+                    else if(ttarget.playerColor.levels[0] == 167 && target2.playerColor.levels[0] != 140){
                         target2.position =-2;
                         target2tail.position = -2;
                         target2taill.position = -2;
@@ -390,13 +382,13 @@ class Controller {
                 }
 
                 if(ttarget.position == ttarget2.position || ttarget.position == ttarget2tail.position || ttarget.position == ttarget2taill.position || ttarget2.position == ttargettail.position || ttarget2.position == ttargettaill.position){
-                    if(ttarget.playerColor.levels[0] == 250/1.5 && ttarget2.playerColor.levels[0] != 210/1.5){
+                    if(ttarget.playerColor.levels[0] == 167 && ttarget2.playerColor.levels[0] != 140){
                         ttarget2.position =-2;
                         ttarget2tail.position = -2;
                         ttarget2taill.position = -2;
                         tt2direct = 0;
                     }
-                    else if(ttarget.playerColor.levels[0] != 250/1.5 && ttarget2.playerColor.levels[0] == 210/1.5){
+                    else if(ttarget.playerColor.levels[0] != 167 && ttarget2.playerColor.levels[0] == 140){
                         ttarget.position =-1;
                         ttargettail.position = -1;
                         ttargettaill.position = -1;
@@ -628,16 +620,16 @@ function keyPressed() {
 
                 if(num == 0){
                     force = 1;
-                    target.playerColor = color(220/1.5,220/1.5,140/1.5);
-                    targettail.playerColor = color(120/1.5,120/1.5,80/1.5);
-                    targettaill.playerColor = color(50/1.5,50/1.5,20/1.5);
+                    target.playerColor = color(213,213,127);
+                    targettail.playerColor = color(113,113,53);
+                    targettaill.playerColor = color(33,33,13);
                     drumbeat.play();
                 }
                 if(num > 0){
                     force = 2;
-                    target.playerColor = color(250/1.5, 80/1.5, 40/1.5);
-                    targettail.playerColor = color(170/1.5, 60/1.5, 20/1.5);
-                    targettaill.playerColor = color(120/1.5, 40/1.5, 5/1.5);
+                    target.playerColor = color(167, 53, 27);
+                    targettail.playerColor = color(113, 40, 13);
+                    targettaill.playerColor = color(113, 27, 3);
                     num--;
                     canonshoot.play();
                 }
@@ -661,16 +653,16 @@ function keyPressed() {
 
                 if(num == 0){
                     force = 1;
-                    ttarget.playerColor = color(220/1.5,220/1.5,140/1.5);
-                    ttargettail.playerColor = color(120/1.5,120/1.5,80/1.5);
-                    ttargettaill.playerColor = color(50/1.5,50/1.5,20/1.5);
+                    ttarget.playerColor = color(213,213,127);
+                    ttargettail.playerColor = color(113,113,53);
+                    ttargettaill.playerColor = color(33,33,13);
                     drumbeat.play();
                 }
                 if(num > 0){
                     force = 2;
-                    ttarget.playerColor = color(250/1.5, 80/1.5, 40/1.5);
-                    ttargettail.playerColor = color(170/1.5, 60/1.5, 20/1.5);
-                    ttargettaill.playerColor = color(120/1.5, 40/1.5, 5/1.5);
+                    ttarget.playerColor = color(167, 53, 27);
+                    ttargettail.playerColor = color(113, 40, 13);
+                    ttargettaill.playerColor = color(113, 27, 3);
                     num--;
                     canonshoot.play();
                 }
@@ -710,14 +702,16 @@ function keyPressed() {
 
                 if(num == 0){
                     force = 1;
-                    target.playerColor = color(220/1.5,220/1.5,140/1.5);
-                    targettail.playerColor = color(120/1.5,120/1.5,80/1.5);
-                    targettaill.playerColor = color(50/1.5,50/1.5,20/1.5);
+                    target.playerColor = color(213,213,127);
+                    targettail.playerColor = color(113,113,53);
+                    targettaill.playerColor = color(33,33,13);
                     drumbeat.play();
                 }
                 if(num > 0){
                     if(num >= 2){
                         explode(sequence, explosion, "A", "G", playerOne);
+                        num = num-2;
+                        sequence = [];
                         if(timer < 485){
                             expltime = timer;
                         }else{
@@ -726,9 +720,9 @@ function keyPressed() {
                     }
                     else{
                         force = 2;
-                        target.playerColor = color(250/1.5, 80/1.5, 40/1.5);
-                        targettail.playerColor = color(170/1.5, 60/1.5, 20/1.5);
-                        targettaill.playerColor = color(120/1.5, 40/1.5, 5/1.5);
+                        target.playerColor = color(167, 53, 27);
+                        targettail.playerColor = color(113, 40, 13);
+                        targettaill.playerColor = color(113, 27, 3);
                         num--;
                         canonshoot.play();
                     }
@@ -753,16 +747,16 @@ function keyPressed() {
 
                 if(num == 0){
                     force = 1;
-                    ttarget.playerColor = color(220/1.5,220/1.5,140/1.5);
-                    ttargettail.playerColor = color(120/1.5,120/1.5,80/1.5);
-                    ttargettaill.playerColor = color(50/1.5,50/1.5,20/1.5);
+                    ttarget.playerColor = color(213,213,127);
+                    ttargettail.playerColor = color(113,113,53);
+                    ttargettaill.playerColor = color(33,33,13);
                     drumbeat.play();
                 }
                 if(num > 0){
                     force = 2;
-                    ttarget.playerColor = color(250/1.5, 80/1.5, 40/1.5);
-                    ttargettail.playerColor = color(170/1.5, 60/1.5, 20/1.5);
-                    ttargettaill.playerColor = color(120/1.5, 40/1.5, 5/1.5);
+                    ttarget.playerColor = color(167, 53, 27);
+                    ttargettail.playerColor = color(113, 40, 13);
+                    ttargettaill.playerColor = color(113, 27, 3);
                     num--;
                     canonshoot.play();
                 }
@@ -776,15 +770,15 @@ function keyPressed() {
     }   
 
     //For playerTwo
-    if (key == 'N' || key == 'n') {   //Left arrow
+    if (key == 'B' || key == 'b') {
         playerTwo.move(-1);
         if (seqtimer2 < seqthreshold){
-            sequence2.push('N')
+            sequence2.push('B')
         }
+        seqtimer2 = 0;
     }
-    seqtimer2 = 0;
 
-    if (key == 'M' || key == 'm') {   //Right arrow
+    if (key == 'M' || key == 'm') {
         playerTwo.move(1);
         if (seqtimer2 < seqthreshold){
             sequence2.push('M')
@@ -795,7 +789,7 @@ function keyPressed() {
     if (keyCode == '188') {  // key: <
         if (seqtimer2< seqthreshold){
             sequence2.push('188')
-            laseratck(sequence2, laser2, "188", "N", playerTwo, -1);
+            laseratck(sequence2, laser2, "188", 'B', playerTwo, -1);
             if(timer < 485){
                 lasertime2 = timer;
             }else{
@@ -806,7 +800,7 @@ function keyPressed() {
             if(target2.position == -2){
                 t2direct=-1;
 
-                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "N"){
+                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == 'B'){
                     target2.position = playerTwo.position - remotedist;
                     target2tail.position = target2.position+1;
                     target2taill.position = target2.position+2;
@@ -820,16 +814,16 @@ function keyPressed() {
 
                 if(num2 == 0){
                     force2 = 1;
-                    target2.playerColor = color(120/1.5,210/1.5,210/1.5);
-                    target2tail.playerColor = color(50/1.5,110/1.5,110/1.5);
-                    target2taill.playerColor = color(5/1.5,60/1.5,60/1.5);
+                    target2.playerColor = color(113,140,140);
+                    target2tail.playerColor = color(33,73,73);
+                    target2taill.playerColor = color(3,40,40);
                     drumbeat.play();
                 }
                 if(num2 > 0){
                     force2 = 2;
-                    target2.playerColor = color(210/1.5, 60/1.5, 230/1.5);
-                    target2tail.playerColor = color(150/1.5, 40/1.5, 150/1.5);
-                    target2taill.playerColor = color(100/1.5, 20/1.5, 100/1.5);
+                    target2.playerColor = color(140, 40, 153);
+                    target2tail.playerColor = color(133, 27, 133);
+                    target2taill.playerColor = color(67, 13, 67);
                     num2--;
                     canonshoot.play();
                 }
@@ -837,7 +831,7 @@ function keyPressed() {
             else if(ttarget2.position == -2){
                 tt2direct=-1;
 
-                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == "N"){
+                if(sequence2[sequence2.length-1]=="188" && sequence2[sequence2.length-2] == 'B'){
                     tttarget2.position = playerTwo.position - remotedist;
                     ttarget2tail.position = ttarget2.position+1;
                     ttarget2taill.position = ttarget2.position+2;
@@ -850,16 +844,16 @@ function keyPressed() {
                 }
                 if(num2 == 0){
                     force2 = 1;
-                    ttarget2.playerColor = color(120/1.5,210/1.5,210/1.5);
-                    ttarget2tail.playerColor = color(50/1.5,110/1.5,110/1.5);
-                    ttarget2taill.playerColor = color(5/1.5,60/1.5,60/1.5);
+                    ttarget2.playerColor = color(113,140,140);
+                    ttarget2tail.playerColor = color(33,73,73);
+                    ttarget2taill.playerColor = color(3,40,40);
                     drumbeat.play();
                 }
                 if(num2 > 0){
                     force2 = 2;
-                    ttarget2.playerColor = color(210/1.5, 60/1.5, 230/1.5);
-                    ttarget2tail.playerColor = color(150/1.5, 40/1.5, 150/1.5);
-                    ttarget2taill.playerColor = color(100/1.5, 20/1.5, 100/1.5);
+                    ttarget2.playerColor = color(140, 40, 153);
+                    ttarget2tail.playerColor = color(133, 27, 133);
+                    ttarget2taill.playerColor = color(67, 13, 67);
                     num2--;
                     canonshoot.play();
                 }
@@ -900,14 +894,16 @@ function keyPressed() {
 
                 if(num2 == 0){
                     force2 = 1;
-                    target2.playerColor = color(120/1.5,210/1.5,210/1.5);
-                    target2tail.playerColor = color(50/1.5,110/1.5,110/1.5);
-                    target2taill.playerColor = color(5/1.5,60/1.5,60/1.5);
+                    target2.playerColor = color(113,140,140);
+                    target2tail.playerColor = color(33,73,73);
+                    target2taill.playerColor = color(3,40,40);
                     drumbeat.play();
                 }
                 if(num2 > 0){
                     if(num2 >= 2){
-                        explode(sequence2, explosion2, "N", "190", playerTwo);
+                        explode(sequence2, explosion2, 'B', "190", playerTwo);
+                        num2 = num2-2;
+                        sequence2 = [];
                         if(timer < 485){
                             expltime2 = timer;
                         }else{
@@ -916,9 +912,9 @@ function keyPressed() {
                     }
                     else{
                         force2 = 2;
-                        target2.playerColor = color(210/1.5, 60/1.5, 230/1.5);
-                        target2tail.playerColor = color(150/1.5, 40/1.5, 150/1.5);
-                        target2taill.playerColor = color(100/1.5, 20/1.5, 100/1.5);
+                        target2.playerColor = color(140, 40, 153);
+                        target2tail.playerColor = color(133, 27, 133);
+                        target2taill.playerColor = color(67, 13, 67);
                         num2--;
                         canonshoot.play();
                     }
@@ -942,16 +938,16 @@ function keyPressed() {
 
                 if(num2 == 0){
                     force2 = 1;
-                    ttarget2.playerColor = color(120/1.5,210/1.5,210/1.5);
-                    ttarget2tail.playerColor = color(50/1.5,110/1.5,110/1.5);
-                    ttarget2taill.playerColor = color(5/1.5,60/1.5,60/1.5);
+                    ttarget2.playerColor = color(113,140,140);
+                    ttarget2tail.playerColor = color(33,73,73);
+                    ttarget2taill.playerColor = color(3,40,40);
                     drumbeat.play();
                 }
                 if(num2 > 0){
                     force2 = 2;
-                    ttarget2.playerColor = color(210/1.5, 60/1.5, 230/1.5);
-                    ttarget2tail.playerColor = color(150/1.5, 40/1.5, 150/1.5);
-                    ttarget2taill.playerColor = color(100/1.5, 20/1.5, 100/1.5);
+                    ttarget2.playerColor = color(140, 40, 153);
+                    ttarget2tail.playerColor = color(133, 27, 133);
+                    ttarget2taill.playerColor = color(67, 13, 67);
                     num2--;
                     canonshoot.play();
                 }
@@ -970,7 +966,6 @@ function keyPressed() {
 
         playerOne.position = parseInt(random(0,displaySize));
         playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
-        //playerOne.playerColor = color(255*life/bloodOne,150*life/bloodOne,50*life/bloodOne);
         target.position =-1;
         targettail.position = -1;
         targettaill.position = -1;
@@ -992,7 +987,6 @@ function keyPressed() {
 
         playerTwo.position = parseInt(random(0,displaySize));
         playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
-        //playerTwo.playerColor = color(20,200*life/bloodTwo,255*life/bloodTwo);
         ttarget.position =-1;
         ttargettail.position = -1;
         ttargettaill.position = -1;

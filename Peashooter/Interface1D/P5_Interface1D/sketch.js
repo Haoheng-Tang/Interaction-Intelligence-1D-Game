@@ -89,13 +89,13 @@ function preload(){
 }
 
 function setup() {
-  let targtColor = color(220/1.5,220/1.5,140/1.5);
-  let targtailColor = color(120/1.5,120/1.5,80/1.5);
-  let targtaillColor = color(50/1.5,50/1.5,20/1.5);
+  let targtColor = color(147,147,93);
+  let targtailColor = color(80,80,5);
+  let targtaillColor = color(3,3,13);
 
-  let targt2Color = color(120/1.5,210/1.5,210/1.5);
-  let targ2tailColor = color(50/1.5,110/1.5,110/1.5);
-  let targ2taillColor = color(5/1.5,60/1.5,60/1.5);
+  let targt2Color = color(80,140,140);
+  let targ2tailColor = color(3,7,7);
+  let targ2taillColor = color(3,40,40);
  
 
   createCanvas((displaySize*pixelSize), pixelSize);     // dynamically sets canvas size
