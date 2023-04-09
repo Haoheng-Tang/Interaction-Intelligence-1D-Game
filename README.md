@@ -7,6 +7,8 @@
 •	Two players represented by orange and blue pixels.
 •	Bullets represented by yellow and cyan pixels.
 •	Power-ups represented by grey pixels that enhance the next shot's power.
+•	Strengthened bullets represented by red and purple pixels.
+
 ### Goal:
 Eliminate the other player's avatar by shooting them with bullets
 ### Attack:

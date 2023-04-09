@@ -7,6 +7,8 @@
 •	Two players represented by orange and blue pixels.
 •	Bullets represented by yellow and cyan pixels.
 •	Power-ups represented by grey pixels that enhance the next shot's power.
+•	Strengthened bullets represented by red and purple pixels.
+
 ### Goal:
 Eliminate the other player's avatar by shooting them with bullets
 ### Attack:
@@ -24,4 +26,5 @@ Eliminate the other player's avatar by shooting them with bullets
 9. Each player has 20 units of "life". A normal bullet, a remote-shot bullet, and a laser attack each cause 1 unit hurt on the other player. 
 10. To use the Explode combo attack, the player must collect two kits in a row, which means the player should avoid firing until they have successfully picked up both kits.
 **Note**: After a player picks up a kit, the next shot will automatically be the super bullet, whether the player wants it or not.
+
 
