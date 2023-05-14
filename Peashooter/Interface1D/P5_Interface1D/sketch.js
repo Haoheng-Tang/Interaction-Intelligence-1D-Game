@@ -15,7 +15,7 @@ let displaySize = 70;   // how many pixels are visible in the game
 let pixelSize = 23;     // how big should they look on screen
 
 let playerOne;    // Adding playerOne to the game
-let life = 30;    // life of player
+let life = 45;    // life of player
 let bloodOne = life; // The times that playOne can be hit by bullets
 let target;       // and one target for players to catch.
 let targettail;   // tail1 following the target.
@@ -59,11 +59,15 @@ let explhurt2 = true;  // to define whether the explosion will hurt playerOne
 
 
 let laserlength = 20;  // laser's length
-let seqthreshold = 5;  // sequence threshold
+let seqthreshold = 12;  // sequence threshold
 let remotedist = 15;  // the distance from the remote-shot bullet to the player
 let kit;          // a kit that can enhance the attack of a player
 let kit2;         // another kit that can enhance the attack of a player
 let kit3;         // another kit that can enhance the attack of a player
+let kit4;         // another kit that can enhance the attack of a player
+let kit5;         // another kit that can enhance the attack of a player
+let kit6;         // another kit that can enhance the attack of a player
+let kit7;         // another kit that can enhance the attack of a player
 
 let display;      // Aggregates our final visual output before showing it on the screen
 let controller;   // This is where the state machine and game logic lives
@@ -142,6 +146,8 @@ function setup() {
   kit3 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
   kit4 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
   kit5 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit6 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
+  kit7 = new Player(color(110,110,110), parseInt(random(0,displaySize)), displaySize);   // Initializing kits
 
   controller = new Controller();            // Initializing controller
 

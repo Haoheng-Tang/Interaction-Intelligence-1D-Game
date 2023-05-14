@@ -30,6 +30,8 @@ class Controller {
                 display.setPixel(kit3.position, kit3.playerColor);
                 display.setPixel(kit4.position, kit4.playerColor);
                 display.setPixel(kit5.position, kit5.playerColor);
+                display.setPixel(kit6.position, kit4.playerColor);
+                display.setPixel(kit7.position, kit5.playerColor);
 
                 // now add the lasers
                 for(let i=0;i<laserlength;i++){
@@ -120,7 +122,7 @@ class Controller {
                     target.position =-1;
                     targettail.position = -1;
                     targettaill.position = -1;
-                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                    playerTwo.playerColor = color(20,200-70*(life-bloodTwo)/life,255-98*(life-bloodTwo)/life);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -139,7 +141,7 @@ class Controller {
                     ttarget.position =-1;
                     ttargettail.position = -1;
                     ttargettaill.position = -1;
-                    playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                    playerTwo.playerColor = color(20,200-70*(life-bloodTwo)/life,255-98*(life-bloodTwo)/life);
                     bass.play();
                     if (playerTwo.position >= playerOne.position- 3 && playerTwo.position <= playerOne.position){
                         playerTwo.move(-18);
@@ -156,7 +158,7 @@ class Controller {
                     if(laser[i].position == playerTwo.position && laserhurt == true){
                         bloodTwo = bloodTwo- force;
                         laserhurt = false;
-                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                        playerTwo.playerColor = color(20,200-70*(life-bloodTwo)/life,255-98*(life-bloodTwo)/life);
                         bass.play();
                         if (playerTwo.position > playerOne.position){
                             playerTwo.move(35);
@@ -191,7 +193,7 @@ class Controller {
                             for(let i=displaySize; i<2*displaySize; i++){ 
                                 explosion[i].position = -100-i}
                             explhurt = true;
-                        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+                        playerTwo.playerColor = color(20,200-70*(life-bloodTwo)/life,255-98*(life-bloodTwo)/life);
                         },1000)
                     }
                 }
@@ -220,7 +222,7 @@ class Controller {
 
                 if(target2.position == playerOne.position || (target2.position+1 == playerOne.position && t2direct < 0) || (target2.position-1 == playerOne.position && t2direct > 0)){
                     bloodOne = bloodOne- force2;
-                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                    playerOne.playerColor = color(255-98*(life-bloodOne)/life,150-40*(life-bloodOne)/life,50);
                     target2.position =-2;
                     target2tail.position = -2;
                     target2taill.position = -2;
@@ -241,7 +243,7 @@ class Controller {
                     ttarget2.position =-2;
                     ttarget2tail.position = -2;
                     ttarget2taill.position = -2;
-                    playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                    playerOne.playerColor = color(255-98*(life-bloodOne)/life,150-40*(life-bloodOne)/life,50);
                     bass.play();
                     if (playerOne.position >= playerTwo.position- 3 && playerOne.position <= playerTwo.position){
                         playerOne.move(-18);
@@ -258,7 +260,7 @@ class Controller {
                     if(laser2[i].position == playerOne.position && laserhurt2 == true){
                         bloodOne = bloodOne- force2;
                         laserhurt2 = false;
-                        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                        playerOne.playerColor = color(255-98*(life-bloodOne)/life,150-40*(life-bloodOne)/life,50);
 
                         bass.play();
                         if (playerOne.position > playerTwo.position){
@@ -294,7 +296,7 @@ class Controller {
                             for(let i=displaySize; i<2*displaySize; i++){ 
                                 explosion2[i].position = -100-i}
                             explhurt2 = true;
-                            playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+                            playerOne.playerColor = color(255-98*(life-bloodOne)/life,150-40*(life-bloodOne)/life,50);
                         },1000)
                     }
                 }
@@ -434,6 +436,16 @@ class Controller {
                     kit5.position = -10;
                     num++;
                 }
+                if(playerOne.position == kit6.position){
+                    bonus.play();
+                    kit6.position = -10;
+                    num++;
+                }
+                if(playerOne.position == kit7.position){
+                    bonus.play();
+                    kit7.position = -10;
+                    num++;
+                }
 
 
                 if(playerTwo.position == kit.position){
@@ -459,6 +471,16 @@ class Controller {
                 if(playerTwo.position == kit5.position){
                     bonus.play();
                     kit5.position = -10;
+                    num2++;
+                }
+                if(playerTwo.position == kit6.position){
+                    bonus.play();
+                    kit6.position = -10;
+                    num2++;
+                }
+                if(playerTwo.position == kit7.position){
+                    bonus.play();
+                    kit7.position = -10;
                     num2++;
                 }
 
@@ -488,6 +510,12 @@ class Controller {
                     }
                     if(kit5.position == -10){
                         kit5.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit6.position == -10){
+                        kit6.position = parseInt(random(0,displaySize));
+                    }
+                    if(kit7.position == -10){
+                        kit7.position = parseInt(random(0,displaySize));
                     }
                 }
 
@@ -580,6 +608,10 @@ function keyPressed() {
         if (seqtimer<seqthreshold){
             sequence.push('A')
         }
+        else{
+            sequence=[];
+            sequence[0]='A';
+        }
         seqtimer = 0;
     }
 
@@ -587,6 +619,10 @@ function keyPressed() {
         playerOne.move(1);
         if (seqtimer<seqthreshold){
             sequence.push('D')
+        }
+        else{
+            sequence=[];
+            sequence[0]='D';
         }
         seqtimer = 0;
     }   
@@ -601,7 +637,11 @@ function keyPressed() {
             }else{
                 lasertime = timer-500;
             }
-        }      
+        }
+        else{
+            sequence=[];
+            sequence[0]='F';
+        }
 
             if(target.position == -1){
                 tdirect=-1;
@@ -683,7 +723,11 @@ function keyPressed() {
                 }else{
                     lasertime = timer-500;
                 }
-        }      
+        }
+        else{
+            sequence=[];
+            sequence[0]='G';
+        }   
 
             if(target.position == -1){
                 tdirect=1;
@@ -710,7 +754,6 @@ function keyPressed() {
                 if(num > 0){
                     if(num >= 2){
                         explode(sequence, explosion, "A", "G", playerOne);
-                        num = num-2;
                         sequence = [];
                         if(timer < 485){
                             expltime = timer;
@@ -775,6 +818,10 @@ function keyPressed() {
         if (seqtimer2 < seqthreshold){
             sequence2.push('B')
         }
+        else{
+            sequence2=[];
+            sequence2[0]='B';
+        }
         seqtimer2 = 0;
     }
 
@@ -782,6 +829,10 @@ function keyPressed() {
         playerTwo.move(1);
         if (seqtimer2 < seqthreshold){
             sequence2.push('M')
+        }
+        else{
+            sequence2=[];
+            sequence2[0]='M';
         }
         seqtimer2 = 0;
     }   
@@ -795,7 +846,11 @@ function keyPressed() {
             }else{
                 lasertime2 = timer-500;
             }
-        }      
+        }
+        else{
+            sequence2=[];
+            sequence2[0]='188';
+        }    
 
             if(target2.position == -2){
                 t2direct=-1;
@@ -875,7 +930,11 @@ function keyPressed() {
             }else{
                 lasertime2 = timer-500;
             }
-        }      
+        }
+        else{
+            sequence2=[];
+            sequence2[0]='190';
+        }  
 
             if(target2.position == -2){
                 t2direct = 1;
@@ -902,7 +961,6 @@ function keyPressed() {
                 if(num2 > 0){
                     if(num2 >= 2){
                         explode(sequence2, explosion2, 'B', "190", playerTwo);
-                        num2 = num2-2;
                         sequence2 = [];
                         if(timer < 485){
                             expltime2 = timer;
@@ -965,7 +1023,7 @@ function keyPressed() {
         bloodTwo = life;
 
         playerOne.position = parseInt(random(0,displaySize));
-        playerOne.playerColor = color(255-195*(life-bloodOne)/life,150-80*(life-bloodOne)/life,50);
+        playerOne.playerColor = color(255-98*(life-bloodOne)/life,150-40*(life-bloodOne)/life,50);
         target.position =-1;
         targettail.position = -1;
         targettaill.position = -1;
@@ -986,7 +1044,7 @@ function keyPressed() {
             explosion[i].position = -100-i}
 
         playerTwo.position = parseInt(random(0,displaySize));
-        playerTwo.playerColor = color(20,200-140*(life-bloodTwo)/life,255-195*(life-bloodTwo)/life);
+        playerTwo.playerColor = color(20,200-70*(life-bloodTwo)/life,255-98*(life-bloodTwo)/life);
         ttarget.position =-1;
         ttargettail.position = -1;
         ttargettaill.position = -1;
@@ -1011,6 +1069,8 @@ function keyPressed() {
         kit3.position = parseInt(random(0,displaySize));
         kit4.position = parseInt(random(0,displaySize));
         kit5.position = parseInt(random(0,displaySize));
+        kit6.position = parseInt(random(0,displaySize));
+        kit7.position = parseInt(random(0,displaySize));
 
         controller.gameState = "PLAY";
     }
